@@ -1,4 +1,4 @@
-# FishJoy:
+# fishjoy
 
 High-performance C++ server framework
 
