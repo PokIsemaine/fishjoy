@@ -48,6 +48,6 @@ jobs:
         cd build
         ctest -C $BUILD_TYPE -VV
 
-    - name: install project
+    - name: install fishjoy
       run: cmake --build build --target install --config Release 
 

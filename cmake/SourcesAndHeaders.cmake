@@ -1,5 +1,5 @@
 set(sources
-    src/tmp.cpp
+    src/log.cpp
 )
 
 set(exe_sources
@@ -8,9 +8,9 @@ set(exe_sources
 )
 
 set(headers
-    include/project/tmp.hpp
+    include/fishjoy/log.hpp
 )
 
 set(test_sources
-  src/tmp_test.cpp
+  src/log_test.cpp
 )

@@ -5,13 +5,13 @@ cmake_minimum_required(VERSION 3.15)
 #
 
 project(
-  "Project"
+  fishjoy
   VERSION 0.1.0
   LANGUAGES CXX
 )
 
 #
-# Set project options
+# Set fishjoy options
 #
 
 include(cmake/StandardSettings.cmake)
@@ -129,7 +129,7 @@ endif()
 message(STATUS "Added all header and implementation files.\n")
 
 #
-# Set the project standard and warnings
+# Set the fishjoy standard and warnings
 #
 
 if(${PROJECT_NAME}_BUILD_HEADERS_ONLY)
@@ -153,10 +153,10 @@ verbose_message("Applied compiler warnings. Using standard ${CMAKE_CXX_STANDARD}
 include(cmake/Doxygen.cmake)
 
 #
-# Model project dependencies
+# Model fishjoy dependencies
 #
 
-# Identify and link with the specific "packages" the project uses
+# Identify and link with the specific "packages" the fishjoy uses
 #find_package(package_name package_version REQUIRED package_type [other_options])
 #target_link_libraries(
 #  ${PROJECT_NAME}
@@ -176,7 +176,7 @@ include(cmake/Doxygen.cmake)
 #endif()
 
 # For Windows, it is necessary to link with the MultiThreaded library.
-# Depending on how the rest of the project's dependencies are linked, it might be necessary
+# Depending on how the rest of the fishjoy's dependencies are linked, it might be necessary
 # to change the line to statically link with the library.
 #
 # This is done as follows:
@@ -237,7 +237,7 @@ endif()
 verbose_message("Project is now aliased as ${PROJECT_NAME}::${PROJECT_NAME}.\n")
 
 #
-# Format the project using the `clang-format` target (i.e: cmake --build build --target clang-format)
+# Format the fishjoy using the `clang-format` target (i.e: cmake --build build --target clang-format)
 #
 
 add_clang_format_target()
