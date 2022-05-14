@@ -13,4 +13,5 @@ set(headers
 
 set(test_sources
   src/log_test.cpp
+  src/log_units_test.cpp
 )
