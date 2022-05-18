@@ -2,7 +2,7 @@
 #ifndef __FISHJOY_LOG_H__
 #define __FISHJOY_LOG_H__
 
-class Level;
+
 #include <cstdint>
 #include <fstream>
 #include <iostream>
@@ -11,6 +11,37 @@ class Level;
 #include <sstream>
 #include <string>
 #include <vector>
+#include <map>
+#include "singleton.hpp"
+
+
+#define FISHJOY_LOG_LEVEL(logger, level) \
+    if(logger->getLevel() <= level) \
+        fishjoy::LogEventWrap(fishjoy::LogEvent::ptr(new fishjoy::LogEvent(logger, level, \
+                        __FILE__, __LINE__, 0, fishjoy::GetThreadId(),\
+                fishjoy::GetFiberId(), time(0)))).getSS()
+
+#define FISHJOY_LOG_DEBUG(logger) FISHJOY_LOG_LEVEL(logger, fishjoy::LogLevel::DEBUG)
+#define FISHJOY_LOG_INFO(logger) FISHJOY_LOG_LEVEL(logger, fishjoy::LogLevel::INFO)
+#define FISHJOY_LOG_WARN(logger) FISHJOY_LOG_LEVEL(logger, fishjoy::LogLevel::WARN)
+#define FISHJOY_LOG_ERROR(logger) FISHJOY_LOG_LEVEL(logger, fishjoy::LogLevel::ERROR)
+#define FISHJOY_LOG_FATAL(logger) FISHJOY_LOG_LEVEL(logger, fishjoy::LogLevel::FATAL)
+
+#define FISHJOY_LOG_FMT_LEVEL(logger, level, fmt, ...) \
+    if(logger->getLevel() <= level) \
+        fishjoy::LogEventWrap(fishjoy::LogEvent::ptr(new fishjoy::LogEvent(logger, level, \
+                        __FILE__, __LINE__, 0, fishjoy::GetThreadId(),\
+                fishjoy::GetFiberId(), time(0)))).getEvent()->format(fmt, __VA_ARGS__)
+
+#define FISHJOY_LOG_FMT_DEBUG(logger, fmt, ...) FISHJOY_LOG_FMT_LEVEL(logger, fishjoy::LogLevel::DEBUG, fmt, __VA_ARGS__)
+#define FISHJOY_LOG_FMT_INFO(logger, fmt, ...)  FISHJOY_LOG_FMT_LEVEL(logger, fishjoy::LogLevel::INFO, fmt, __VA_ARGS__)
+#define FISHJOY_LOG_FMT_WARN(logger, fmt, ...)  FISHJOY_LOG_FMT_LEVEL(logger, fishjoy::LogLevel::WARN, fmt, __VA_ARGS__)
+#define FISHJOY_LOG_FMT_ERROR(logger, fmt, ...) FISHJOY_LOG_FMT_LEVEL(logger, fishjoy::LogLevel::ERROR, fmt, __VA_ARGS__)
+#define FISHJOY_LOG_FMT_FATAL(logger, fmt, ...) FISHJOY_LOG_FMT_LEVEL(logger, fishjoy::LogLevel::FATAL, fmt, __VA_ARGS__)
+
+#define FISHJOY_LOG_ROOT() fishjoy::LoggerMgr::GetInstance()->getRoot()
+
+class Level;
 
 namespace fishjoy
 {
@@ -106,6 +137,18 @@ namespace fishjoy
     LogLevel::Level m_level;
   };
 
+  //日志封装
+  class LogEventWarp
+  {
+   public:
+      LogEventWarp(LogEvent::ptr e);
+      ~LogEventWarp();
+      LogEvent::ptr getEvent() const { return m_event; }
+      std::stringstream& getSS();
+   private:
+      LogEvent::ptr m_event;
+  };
+
   //日志格式器
   class LogFormatter
   {
@@ -169,7 +212,7 @@ namespace fishjoy
    public:
     using ptr = std::shared_ptr<Logger>;
 
-    Logger(const std::string& name = "root");
+    explicit Logger(const std::string& name = "root");
 
     //工具函数
     void log(LogLevel::Level level, const LogEvent::ptr event);
@@ -226,6 +269,7 @@ namespace fishjoy
     LogFormatter::ptr m_formatter;
   };
 
+
   //输出到控制台的Appender
   class StdoutLogAppender : public LogAppender
   {
@@ -250,5 +294,22 @@ namespace fishjoy
     std::ofstream m_filestream;
   };
 
+
+  //日志管理器
+  //日志管理器
+  class LoggerManager
+  {
+   public:
+      LoggerManager();
+      Logger::ptr getLogger(const std::string& name);
+
+      void init();
+      Logger::ptr getRoot() const { return m_root; }
+   private:
+      std::map<std::string, Logger::ptr> m_loggers;
+      Logger::ptr m_root;
+  };
+
+  typedef fishjoy::Singleton<LoggerManager> LoggerMgr;
 }  // namespace fishjoy
 #endif
