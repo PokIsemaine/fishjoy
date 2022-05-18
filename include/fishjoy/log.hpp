@@ -2,6 +2,8 @@
 #ifndef __FISHJOY_LOG_H__
 #define __FISHJOY_LOG_H__
 
+#include <stdarg.h>
+
 #include <cstdint>
 #include <fstream>
 #include <iostream>
@@ -13,6 +15,7 @@
 #include <vector>
 
 #include "singleton.hpp"
+#include "util.hpp"
 
 #define FISHJOY_LOG_LEVEL(logger, level)                                                                                    \
   if (logger->getLevel() <= level)                                                                                          \
@@ -138,11 +141,11 @@ namespace fishjoy
   };
 
   //日志封装
-  class LogEventWarp
+  class LogEventWrap
   {
    public:
-    LogEventWarp(LogEvent::ptr e);
-    ~LogEventWarp();
+    LogEventWrap(LogEvent::ptr e);
+    ~LogEventWrap();
     LogEvent::ptr getEvent() const
     {
       return m_event;
