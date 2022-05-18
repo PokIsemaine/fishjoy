@@ -9,6 +9,7 @@ set(exe_sources
 
 set(headers
     include/fishjoy/log.hpp
+	include/fishjoy/singleton.hpp
 )
 
 set(test_sources
