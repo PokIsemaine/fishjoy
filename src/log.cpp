@@ -484,7 +484,8 @@ namespace fishjoy
     // std::cout << m_items.size() << std::endl;
   }
 
-  LoggerManager::LoggerManager() {
+  LoggerManager::LoggerManager()
+  {
     m_root.reset(new Logger);
     m_root->addAppender(LogAppender::ptr(new StdoutLogAppender));
   }
