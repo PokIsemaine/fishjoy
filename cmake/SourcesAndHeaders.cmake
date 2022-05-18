@@ -1,5 +1,6 @@
 set(sources
     src/log.cpp
+	src/config.cpp
 )
 
 set(exe_sources
@@ -10,6 +11,7 @@ set(exe_sources
 set(headers
     include/fishjoy/log.hpp
 	include/fishjoy/singleton.hpp
+	include/fishjoy/config.hpp
 )
 
 set(test_sources
