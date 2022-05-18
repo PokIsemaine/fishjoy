@@ -36,6 +36,16 @@ jobs:
         cmake --build build --config Release
         cmake --build build --target install --config Release
 
+    - name: install yaml-cpp
+      if: ${{ steps.cache.output.cache-hit != 'true' }}
+      run: |
+        cd ..
+        git clone https://github.com/jbeder/yaml-cpp.git --branch master
+        cd yaml-cpp
+        cmake -Bbuild -DCMAKE_INSTALL_PREFIX=$GITHUB_WORKSPACE/$INSTALL_LOCATION
+        cmake --build build --config Release
+        cmake --build build --target install --config Release
+
     - name: configure
       run: cmake -Bbuild -DCMAKE_INSTALL_PREFIX=$GITHUB_WORKSPACE/$INSTALL_LOCATION -Dfishjoy_ENABLE_CODE_COVERAGE=1
       
