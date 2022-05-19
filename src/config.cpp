@@ -23,7 +23,7 @@ namespace fishjoy
       FISHJOY_LOG_ERROR(FISHJOY_LOG_ROOT()) << "Config invalid name: " << prefix << " : " << node;
       return;
     }
-    output.push_back(std::make_pair(prefix, node));
+    output.emplace_back(prefix, node);
     if (node.IsMap())
     {
       for (auto it = node.begin(); it != node.end(); ++it)

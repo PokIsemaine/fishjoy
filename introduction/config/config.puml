@@ -1,0 +1,13 @@
+@startuml
+abstract class ConfigVarBase
+{
+}
+class ConfigVar
+{
+}
+class Config
+{
+}
+
+ConfigVarBase <|-- ConfigVar
+@enduml
