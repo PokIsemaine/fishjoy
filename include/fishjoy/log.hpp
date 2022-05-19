@@ -2,7 +2,6 @@
 #ifndef __FISHJOY_LOG_H__
 #define __FISHJOY_LOG_H__
 
-#include <stdarg.h>
 
 #include <cstdint>
 #include <fstream>
@@ -13,6 +12,7 @@
 #include <sstream>
 #include <string>
 #include <vector>
+#include <stdarg.h>
 
 #include "singleton.hpp"
 #include "util.hpp"
@@ -72,7 +72,7 @@ namespace fishjoy
   class LogEvent
   {
    public:
-    typedef std::shared_ptr<LogEvent> ptr;
+    using ptr = std::shared_ptr<LogEvent>;
     LogEvent(
         std::shared_ptr<Logger> logger,
         LogLevel::Level level,
@@ -144,7 +144,7 @@ namespace fishjoy
   class LogEventWrap
   {
    public:
-    LogEventWrap(LogEvent::ptr e);
+    explicit LogEventWrap(LogEvent::ptr event);
     ~LogEventWrap();
     LogEvent::ptr getEvent() const
     {
@@ -206,6 +206,11 @@ namespace fishjoy
     void setFormatter(LogFormatter::ptr fmt)
     {
       m_formatter = fmt;
+    }
+
+    void setLevel(LogLevel::Level level)
+    {
+      m_level = level;
     }
 
    protected:
@@ -319,6 +324,6 @@ namespace fishjoy
     Logger::ptr m_root;
   };
 
-  typedef fishjoy::Singleton<LoggerManager> LoggerMgr;
+  using LoggerMgr = fishjoy::Singleton<LoggerManager>;
 }  // namespace fishjoy
 #endif

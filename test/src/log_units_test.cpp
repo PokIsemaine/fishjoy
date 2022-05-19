@@ -2,11 +2,29 @@
 
 #include <gtest/gtest.h>
 
-TEST(TmpAddTest, CheckValues)
+TEST(StdOut, INFO)
 {
-  ASSERT_EQ(3, 3);
-  EXPECT_TRUE(true);
+  fishjoy::Logger::ptr logger(new fishjoy::Logger);
+  logger->addAppender(fishjoy::LogAppender::ptr(new fishjoy::StdoutLogAppender));
+  logger->setLevel(fishjoy::LogLevel::INFO);
 }
+TEST(StdOut, DEBUG)
+{
+
+}
+TEST(StdOut, WARN)
+{
+
+}
+TEST(StdOut, ERROR)
+{
+
+}
+TEST(StdOut, FATAL)
+{
+
+}
+
 
 int main(int argc, char **argv)
 {
