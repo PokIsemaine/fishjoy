@@ -26,6 +26,10 @@ jobs:
         path: ${{ github.workspace }}/${{ env.INSTALL_LOCATION }}
         key: ${{ runner.os }}-dependencies
 
+
+    - name: Setup Debug Session
+        uses: csexton/debugger-action@master
+
     - name: install GoogleTest
       if: ${{ steps.cache.output.cache-hit != 'true' }}
       run: |
@@ -58,7 +62,7 @@ jobs:
 
     - name: configure
       run: cmake -Bbuild -DCMAKE_INSTALL_PREFIX=$GITHUB_WORKSPACE/$INSTALL_LOCATION -Dfishjoy_ENABLE_CODE_COVERAGE=1
-      
+
     - name: build
       run: cmake --build build --config $BUILD_TYPE -j4
 
@@ -67,9 +71,12 @@ jobs:
         cd build
         ctest -C $BUILD_TYPE -VV
 
-    - name: Code coverage using Codecov 
-      run: bash <(curl -s https://codecov.io/bash) 
+    - name: Code coverage using Codecov
+      run: bash <(curl -s https://codecov.io/bash)
 
     - name: install fishjoy
-      run: cmake --build build --target install --config Release 
+      run: cmake --build build --target install --config Release
+
+
+
 
