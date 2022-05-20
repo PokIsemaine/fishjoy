@@ -5,7 +5,7 @@
 #ifndef FISHJOY_CONFIG_HPP
 #define FISHJOY_CONFIG_HPP
 
-#include "yaml-cpp/yaml.h"
+#include <yaml-cpp/yaml.h>
 #include <boost/lexical_cast.hpp>
 #include <memory>
 #include <sstream>
