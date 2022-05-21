@@ -51,7 +51,7 @@ jobs:
       if: ${{ steps.cache.output.cache-hit != 'true' }}
       run: |
         cd ..
-        git clone https://github.com/boostorg/boost.git --branch boost-1.79.0
+        git clone https://github.com/boostorg/boost.git
         cd boost
         cmake -B build -DCMAKE_INSTALL_PREFIX=$GITHUB_WORKSPACE/$INSTALL_LOCATION
         cmake --build build --config Release
