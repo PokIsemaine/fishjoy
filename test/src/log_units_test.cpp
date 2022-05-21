@@ -1,5 +1,5 @@
 #include "fishjoy/log.hpp"
-
+#include <yaml-cpp/yaml.h>
 #include <gtest/gtest.h>
 
 TEST(StdOut, INFO)
