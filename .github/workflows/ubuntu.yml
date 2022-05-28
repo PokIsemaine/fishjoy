@@ -47,15 +47,20 @@ jobs:
         cmake --build build --config Release
         cmake --build build --target install --config Release
 
-    - name: install boost
-      if: ${{ steps.cache.output.cache-hit != 'true' }}
-      run: |
-        cd ..
-        git clone https://github.com/boostorg/boost.git
-        cd boost
-        cmake -B build -DCMAKE_INSTALL_PREFIX=$GITHUB_WORKSPACE/$INSTALL_LOCATION
-        cmake --build build --config Release
-        cmake --build build --target install --config Release
+    - name: Download and install Boost
+      uses: MarkusJx/install-boost@v2.3.0
+      with:
+        boost_version: "1.78.0"
+
+#    - name: install boost
+#      if: ${{ steps.cache.output.cache-hit != 'true' }}
+#      run: |
+#        cd ..
+#        git clone https://github.com/boostorg/boost.git
+#        cd boost
+#        cmake -B build -DCMAKE_INSTALL_PREFIX=$GITHUB_WORKSPACE/$INSTALL_LOCATION
+#        cmake --build build --config Release
+#        cmake --build build --target install --config Release
 
     - name: configure
       run: cmake -Bbuild -DCMAKE_INSTALL_PREFIX=$GITHUB_WORKSPACE/$INSTALL_LOCATION -Dfishjoy_ENABLE_CODE_COVERAGE=1
