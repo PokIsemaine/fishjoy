@@ -190,19 +190,6 @@ if(${PROJECT_NAME}_BUILD_EXECUTABLE AND ${PROJECT_NAME}_ENABLE_UNIT_TESTING)
   )
 endif()
 
-find_package(boost REQUIRED)
-target_link_libraries(
-        ${PROJECT_NAME}
-        PUBLIC
-        boost
-)
-if(${PROJECT_NAME}_BUILD_EXECUTABLE AND ${PROJECT_NAME}_ENABLE_UNIT_TESTING)
-  target_link_libraries(
-          ${PROJECT_NAME}_LIB
-          PUBLIC
-          boost
-  )
-endif()
 
 # For Windows, it is necessary to link with the MultiThreaded library.
 # Depending on how the rest of the fishjoy's dependencies are linked, it might be necessary
