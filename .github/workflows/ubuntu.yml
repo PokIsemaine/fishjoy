@@ -52,6 +52,7 @@ jobs:
         boost_version: "1.78.0"
         platform_version: "18.04"
         arch: "x86"
+        boost_install_dir: ${{ github.workspace }}/${{ env.INSTALL_LOCATION }}
 
     - name: configure
       run: cmake -Bbuild -DCMAKE_INSTALL_PREFIX=$GITHUB_WORKSPACE/$INSTALL_LOCATION -Dfishjoy_ENABLE_CODE_COVERAGE=1
