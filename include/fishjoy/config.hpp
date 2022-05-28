@@ -100,7 +100,7 @@ namespace fishjoy
     T m_val;
   };
 
-  //F from_type, T to_type
+  // 类型转换模板类 F from_type, T to_type
   template<class F, class T>
   class LexicalCast {
    public:
@@ -109,6 +109,7 @@ namespace fishjoy
     }
   };
 
+  //boost::lexical_cast 只能进行基本类型和std::string的转换，需要对其他类型进行特化
   template<class T>
   class LexicalCast<std::string, std::vector<T> > {
    public:

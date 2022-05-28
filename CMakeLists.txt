@@ -115,7 +115,6 @@ set_target_properties(
   ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/lib/${CMAKE_BUILD_TYPE}"
   LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/lib/${CMAKE_BUILD_TYPE}"
   RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin/${CMAKE_BUILD_TYPE}"
-  RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/share/${CMAKE_BUILD_TYPE}"
 
 )
 if(${PROJECT_NAME}_BUILD_EXECUTABLE AND ${PROJECT_NAME}_ENABLE_UNIT_TESTING)
@@ -176,6 +175,34 @@ include(cmake/Doxygen.cmake)
 #      dependency1 ...
 #  )
 #endif()
+
+find_package(yaml-cpp REQUIRED)
+target_link_libraries(
+        ${PROJECT_NAME}
+        PUBLIC
+        yaml-cpp
+)
+if(${PROJECT_NAME}_BUILD_EXECUTABLE AND ${PROJECT_NAME}_ENABLE_UNIT_TESTING)
+  target_link_libraries(
+          ${PROJECT_NAME}_LIB
+          PUBLIC
+          yaml-cpp
+  )
+endif()
+
+find_package(boost REQUIRED)
+target_link_libraries(
+        ${PROJECT_NAME}
+        PUBLIC
+        boost
+)
+if(${PROJECT_NAME}_BUILD_EXECUTABLE AND ${PROJECT_NAME}_ENABLE_UNIT_TESTING)
+  target_link_libraries(
+          ${PROJECT_NAME}_LIB
+          PUBLIC
+          boost
+  )
+endif()
 
 # For Windows, it is necessary to link with the MultiThreaded library.
 # Depending on how the rest of the fishjoy's dependencies are linked, it might be necessary
