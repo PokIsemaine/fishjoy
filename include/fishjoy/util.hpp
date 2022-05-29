@@ -14,7 +14,6 @@
 
 namespace fishjoy
 {
-
   pid_t GetThreadId();
   uint32_t GetFiberId();
 }  // namespace fishjoy
