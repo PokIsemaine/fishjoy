@@ -6,16 +6,17 @@
 #define FISHJOY_THREAD_HPP
 
 #include <pthread.h>
-
 #include <functional>
 #include <memory>
 #include <string>
 #include <thread>
 #include <semaphore.h>
 
+#include "noncopyable.hpp"
+
 namespace fishjoy
 {
-  class Semaphore {
+  class Semaphore : Noncopyable {
    public:
     Semaphore(uint32_t count = 0);
     ~Semaphore();
@@ -23,9 +24,6 @@ namespace fishjoy
     void wait();
     void notify();
 
-    Semaphore(const Semaphore&) = delete;
-    Semaphore(const Semaphore&&) = delete;
-    Semaphore& operator=(const Semaphore&) = delete;
    private:
     sem_t m_semaphore;
   };
@@ -123,7 +121,7 @@ namespace fishjoy
     bool m_locked;
   };
 
-  class RWMutex {
+  class RWMutex : Noncopyable {
    public:
     using ReadLock = ReadScopedLockImpl<RWMutex>;
     using WriteLock = WriteScopedLockImpl<RWMutex>;
@@ -150,7 +148,7 @@ namespace fishjoy
    private:
     pthread_rwlock_t m_lock;
   };
-  class Thread
+  class Thread : Noncopyable
   {
    public:
     using ptr = std::shared_ptr<Thread>;

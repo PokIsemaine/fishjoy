@@ -15,6 +15,7 @@ set(headers
 	include/fishjoy/singleton.hpp
 	include/fishjoy/config.hpp
 	include/fishjoy/thread.hpp
+	include/fishjoy/noncopyable.hpp
 )
 
 set(test_sources
