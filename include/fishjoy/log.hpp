@@ -43,6 +43,7 @@
 #define FISHJOY_LOG_FMT_FATAL(logger, fmt, ...) FISHJOY_LOG_FMT_LEVEL(logger, fishjoy::LogLevel::FATAL, fmt, __VA_ARGS__)
 
 #define FISHJOY_LOG_ROOT() fishjoy::LoggerMgr::GetInstance()->getRoot()
+#define FISHJOY_LOG_NAME(name) fishjoy::LoggerMgr::GetInstance()->getLogger(name)
 
 class Level;
 
