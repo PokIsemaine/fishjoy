@@ -1,0 +1,25 @@
+@startuml
+class Tread {
+   +Tread()
+   +~Tread()
+   + getId()
+   + getName()
+   + join()
+   + GetThis()
+   + GetName();
+   + SetName();
+   - m_id
+   - m_thread
+   - m_callback
+   - m_name
+}
+
+class RWMutex {
++ RWMutex()
++ ~RWMutex()
++ rdlock()
++ wrlock()
++ unlock()
+- m_lock
+}
+@enduml
