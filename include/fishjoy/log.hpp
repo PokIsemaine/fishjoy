@@ -2,7 +2,7 @@
 #ifndef __FISHJOY_LOG_H__
 #define __FISHJOY_LOG_H__
 
-#include <stdarg.h>
+#include <cstdarg>
 
 #include <cstdint>
 #include <fstream>
@@ -45,12 +45,12 @@
 #define FISHJOY_LOG_ROOT()     fishjoy::LoggerMgr::GetInstance()->getRoot()
 #define FISHJOY_LOG_NAME(name) fishjoy::LoggerMgr::GetInstance()->getLogger(name)
 
-class Level;
 
 namespace fishjoy
 {
 
   class Logger;
+  class LoggerManager;
 
   //日志级别
   class LogLevel
@@ -112,6 +112,11 @@ namespace fishjoy
     {
       return m_ss.str();
     }
+
+    std::stringstream& getSS()
+    {
+      return m_ss;
+    }
     std::shared_ptr<Logger> getLogger() const
     {
       return m_logger;
@@ -121,10 +126,7 @@ namespace fishjoy
       return m_level;
     }
 
-    std::stringstream& getSS()
-    {
-      return m_ss;
-    }
+
     void format(const char* fmt, ...);
     void format(const char* fmt, va_list al);
 
@@ -135,7 +137,7 @@ namespace fishjoy
     uint32_t m_threadId = 0;       //线程id
     uint32_t m_fiberId = 0;        //协程id
     uint64_t m_time = 0;           //时间戳
-    std::stringstream m_ss;
+    std::stringstream m_ss;        //内容
 
     std::shared_ptr<Logger> m_logger;
     LogLevel::Level m_level;
@@ -169,11 +171,11 @@ namespace fishjoy
 
    public:
     // 具体日志格式项
-    class FormatItem
+    class LogFormatItem
     {
      public:
-      using ptr = std::shared_ptr<FormatItem>;
-      virtual ~FormatItem() = default;
+      using ptr = std::shared_ptr<LogFormatItem>;
+      virtual ~LogFormatItem() = default;
 
       virtual void format(std::ostream& os, std::shared_ptr<Logger> logger, LogLevel::Level level, LogEvent::ptr event) = 0;
     };
@@ -184,7 +186,7 @@ namespace fishjoy
     //日志格式
     std::string m_pattern;
     //通过日志格式解析出来的 FormatItem, 支持扩展
-    std::vector<FormatItem::ptr> m_items;
+    std::vector<LogFormatItem::ptr> m_items;
   };
 
   //日志输出位置
@@ -223,6 +225,7 @@ namespace fishjoy
   //日志器
   class Logger : public std::enable_shared_from_this<Logger>
   {
+    friend class LoggerManager;
    public:
     using ptr = std::shared_ptr<Logger>;
 
@@ -279,8 +282,9 @@ namespace fishjoy
    private:
     std::string m_name;                       //日志名称
     LogLevel::Level m_level;                  //日志级别
-    std::list<LogAppender::ptr> m_appenders;  // Appender集合
-    LogFormatter::ptr m_formatter;
+    std::list<LogAppender::ptr> m_appenders;  //Appender集合
+    LogFormatter::ptr m_formatter;            //日志器格式
+    Logger::ptr m_root;                       //主日志器
   };
 
   //输出到控制台的Appender
@@ -322,6 +326,7 @@ namespace fishjoy
 
    private:
     std::map<std::string, Logger::ptr> m_loggers;
+
     Logger::ptr m_root;
   };
 

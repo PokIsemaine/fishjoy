@@ -27,7 +27,7 @@ namespace fishjoy
     }
   }
 
-  LogEventWrap::LogEventWrap(LogEvent::ptr e) : m_event(e)
+  LogEventWrap::LogEventWrap(LogEvent::ptr event) : m_event(event)
   {
   }
 
@@ -59,7 +59,7 @@ namespace fishjoy
   {
     return m_event->getSS();
   }
-  class MessageFormatItem : public LogFormatter::FormatItem
+  class MessageFormatItem : public LogFormatter::LogFormatItem
   {
    public:
     MessageFormatItem(const std::string& str = "")
@@ -71,7 +71,7 @@ namespace fishjoy
     }
   };
 
-  class LevelFormatItem : public LogFormatter::FormatItem
+  class LevelFormatItem : public LogFormatter::LogFormatItem
   {
    public:
     LevelFormatItem(const std::string& str = "")
@@ -83,7 +83,7 @@ namespace fishjoy
     }
   };
 
-  class ElapseFormatItem : public LogFormatter::FormatItem
+  class ElapseFormatItem : public LogFormatter::LogFormatItem
   {
    public:
     ElapseFormatItem(const std::string& str = "")
@@ -95,7 +95,7 @@ namespace fishjoy
     }
   };
 
-  class NameFormatItem : public LogFormatter::FormatItem
+  class NameFormatItem : public LogFormatter::LogFormatItem
   {
    public:
     NameFormatItem(const std::string& str = "")
@@ -107,7 +107,7 @@ namespace fishjoy
     }
   };
 
-  class ThreadIdFormatItem : public LogFormatter::FormatItem
+  class ThreadIdFormatItem : public LogFormatter::LogFormatItem
   {
    public:
     ThreadIdFormatItem(const std::string& str = "")
@@ -119,7 +119,7 @@ namespace fishjoy
     }
   };
 
-  class FiberIdFormatItem : public LogFormatter::FormatItem
+  class FiberIdFormatItem : public LogFormatter::LogFormatItem
   {
    public:
     FiberIdFormatItem(const std::string& str = "")
@@ -131,7 +131,7 @@ namespace fishjoy
     }
   };
 
-  class DateTimeFormatItem : public LogFormatter::FormatItem
+  class DateTimeFormatItem : public LogFormatter::LogFormatItem
   {
    public:
     DateTimeFormatItem(const std::string& format = "%Y-%m-%d %H:%M:%S") : m_format(format)
@@ -156,7 +156,7 @@ namespace fishjoy
     std::string m_format;
   };
 
-  class FilenameFormatItem : public LogFormatter::FormatItem
+  class FilenameFormatItem : public LogFormatter::LogFormatItem
   {
    public:
     FilenameFormatItem(const std::string& str = "")
@@ -168,7 +168,7 @@ namespace fishjoy
     }
   };
 
-  class LineFormatItem : public LogFormatter::FormatItem
+  class LineFormatItem : public LogFormatter::LogFormatItem
   {
    public:
     LineFormatItem(const std::string& str = "")
@@ -180,7 +180,7 @@ namespace fishjoy
     }
   };
 
-  class NewLineFormatItem : public LogFormatter::FormatItem
+  class NewLineFormatItem : public LogFormatter::LogFormatItem
   {
    public:
     NewLineFormatItem(const std::string& str = "")
@@ -192,7 +192,7 @@ namespace fishjoy
     }
   };
 
-  class StringFormatItem : public LogFormatter::FormatItem
+  class StringFormatItem : public LogFormatter::LogFormatItem
   {
    public:
     StringFormatItem(const std::string& str) : m_string(str)
@@ -207,7 +207,7 @@ namespace fishjoy
     std::string m_string;
   };
 
-  class TabFormatItem : public LogFormatter::FormatItem
+  class TabFormatItem : public LogFormatter::LogFormatItem
   {
    public:
     TabFormatItem(const std::string& str = "")
@@ -481,10 +481,10 @@ namespace fishjoy
     {
       vec.push_back(std::make_tuple(nstr, "", 0));
     }
-    static std::map<std::string, std::function<FormatItem::ptr(const std::string& str)>> s_format_items = {
+    static std::map<std::string, std::function<LogFormatItem::ptr(const std::string& str)>> s_format_items = {
 #define XX(str, C)                                                           \
   {                                                                          \
-#str, [](const std::string& fmt) { return FormatItem::ptr(new C(fmt)); } \
+#str, [](const std::string& fmt) { return LogFormatItem::ptr(new C(fmt)); } \
   }
 
       XX(m, MessageFormatItem),  XX(p, LevelFormatItem),   XX(r, ElapseFormatItem),   XX(c, NameFormatItem),
@@ -497,14 +497,14 @@ namespace fishjoy
     {
       if (std::get<2>(i) == 0)
       {
-        m_items.push_back(FormatItem::ptr(new StringFormatItem(std::get<0>(i))));
+        m_items.push_back(LogFormatItem::ptr(new StringFormatItem(std::get<0>(i))));
       }
       else
       {
         auto it = s_format_items.find(std::get<0>(i));
         if (it == s_format_items.end())
         {
-          m_items.push_back(FormatItem::ptr(new StringFormatItem("<<error_format %" + std::get<0>(i) + ">>")));
+          m_items.push_back(LogFormatItem::ptr(new StringFormatItem("<<error_format %" + std::get<0>(i) + ">>")));
         }
         else
         {
@@ -521,11 +521,26 @@ namespace fishjoy
   {
     m_root.reset(new Logger);
     m_root->addAppender(LogAppender::ptr(new StdoutLogAppender));
+
+    m_loggers[m_root->m_name] = m_root;
+
+    init();
   }
 
   Logger::ptr LoggerManager::getLogger(const std::string& name)
   {
     auto it = m_loggers.find(name);
-    return it == m_loggers.end() ? m_root : it->second;
+    if( it != m_loggers.end()) {
+      return it->second;
+    }
+
+    Logger::ptr logger(new Logger(name));
+    logger->m_root = m_root;
+    m_loggers[name] = logger;
+    return logger;
+  }
+  
+  void LoggerManager::init() {
+
   }
 }  // namespace fishjoy
