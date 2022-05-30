@@ -33,7 +33,6 @@ namespace fishjoy
 
   LogEventWrap::~LogEventWrap()
   {
-    std::cout << "~LogEventWrap" << std::endl;
     m_event->getLogger()->log(m_event->getLevel(), m_event);
   }
 
@@ -250,7 +249,7 @@ namespace fishjoy
   //工具函数 log 根据不同日志级别写日志
   void Logger::log(LogLevel::Level level, const LogEvent::ptr event)
   {
-    if (level >= m_level)
+    if (level >= m_level) //事件日志级别 >= 日志器日志级别
     {
       auto self = shared_from_this();
       for (auto& i : m_appenders)
