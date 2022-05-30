@@ -18,6 +18,7 @@ void fun2() {
 
 int main(int argc, char** argv) {
   FISHJOY_LOG_INFO(g_logger) << "thread test begin";
+
   std::vector<fishjoy::Thread::ptr> threads;
   for(int i = 0; i < 5; ++i) {
     fishjoy::Thread::ptr thread(new fishjoy::Thread(&fun1, "name_" + std::to_string(i)));
