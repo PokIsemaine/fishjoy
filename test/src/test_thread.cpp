@@ -18,15 +18,16 @@ void fun2() {
 
 int main(int argc, char** argv) {
   FISHJOY_LOG_INFO(g_logger) << "thread test begin";
-  std::vector<fishjoy::Thread::ptr> thrs;
+  std::vector<fishjoy::Thread::ptr> threads;
   for(int i = 0; i < 5; ++i) {
-    fishjoy::Thread::ptr thr(new fishjoy::Thread(&fun1, "name_" + std::to_string(i)));
-    thrs.push_back(thr);
+    fishjoy::Thread::ptr thread(new fishjoy::Thread(&fun1, "name_" + std::to_string(i)));
+    threads.push_back(thread);
   }
 
   for(int i = 0; i < 5; ++i) {
-    thrs[i]->join();
+    threads[i]->join();
   }
   FISHJOY_LOG_INFO(g_logger) << "thread test end";
+
   return 0;
 }
