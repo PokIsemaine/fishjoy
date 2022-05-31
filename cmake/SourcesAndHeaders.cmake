@@ -3,6 +3,7 @@ set(sources
 	src/config.cpp
 	src/util.cpp
 	src/thread.cpp
+	src/mutex.cpp
 )
 
 set(exe_sources
@@ -16,6 +17,7 @@ set(headers
 	include/fishjoy/config.hpp
 	include/fishjoy/thread.hpp
 	include/fishjoy/noncopyable.hpp
+	include/fishjoy/mutex.hpp
 )
 
 set(test_sources

@@ -16,6 +16,7 @@
 
 #include "singleton.hpp"
 #include "util.hpp"
+#include "thread.hpp"
 
 #define FISHJOY_LOG_LEVEL(logger, level)                                                                                    \
   if (logger->getLevel() <= level)                                                                                          \
