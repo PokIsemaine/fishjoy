@@ -22,4 +22,5 @@ class RWMutex {
 + unlock()
 - m_lock
 }
+
 @enduml

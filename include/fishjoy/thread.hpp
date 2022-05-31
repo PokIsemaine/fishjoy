@@ -64,7 +64,7 @@ namespace fishjoy
    public:
     ReadScopedLockImpl(T& mutex)
         :m_mutex(mutex) {
-      mutex.lock();
+      mutex.rdlock();
       m_locked = true;
     }
 
@@ -95,7 +95,7 @@ namespace fishjoy
    public:
     WriteScopedLockImpl(T& mutex)
         :m_mutex(mutex) {
-      mutex.lock();
+      mutex.wrlock();
       m_locked = true;
     }
 
@@ -105,7 +105,7 @@ namespace fishjoy
 
     void lock(){
       if(!m_locked) {
-        m_mutex.lock();
+        m_mutex.wrlock();
         m_locked = true;
       }
     }
