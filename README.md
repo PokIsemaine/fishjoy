@@ -2,6 +2,16 @@
 
 High-performance C++ server framework
 
+```
+ ______   __     ______     __  __       __     ______     __  __    
+/\  ___\ /\ \   /\  ___\   /\ \_\ \     /\ \   /\  __ \   /\ \_\ \   
+\ \  __\ \ \ \  \ \___  \  \ \  __ \   _\_\ \  \ \ \/\ \  \ \____ \  
+\ \_\    \ \_\  \/\_____\  \ \_\ \_\ /\_____\  \ \_____\  \/\_____\
+\/_/     \/_/   \/_____/   \/_/\/_/ \/_____/   \/_____/   \/_____/
+
+```
+
+
 ## Project Structure
 
 Based on a template from [filipdutescu / modern-cpp-template](https://github.com/filipdutescu/modern-cpp-template)
