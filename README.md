@@ -26,7 +26,6 @@ Based on a template from [filipdutescu / modern-cpp-template](https://github.com
 * `introduction`: Introduction and design files for the project
 * `src`: The source files required for the project
 * `test`:The test files required for the project. (Google Test)
-## Getting Started
 
 ### Prerequisites
 
