@@ -1,5 +1,9 @@
 # fishjoy
 
+[![C++](https://img.shields.io/badge/language-C++-blue.svg)](https://isocpp.org/)
+[![Code Style](https://img.shields.io/badge/code%20style-google-blue.svg)](https://google.github.io/styleguide/cppguide.html)
+[![Platform](https://img.shields.io/badge/platform-linux%20-lightgrey.svg)](https://www.kernel.org/)
+
 High-performance C++ server framework
 
 ```
@@ -30,6 +34,19 @@ Based on a template from [filipdutescu / modern-cpp-template](https://github.com
 
 * C++ Compiler - needs to support at least the C++20 standard, i.e. MSVC, GCC, Clang
 
+##  Getting Started
+
+### Building
+
+### Debugging
+
+### Testing
+
+### Example
+
+## More Complex Examples
+
+
 ## Contributing
 
 * 我需要 1 位熟悉 Github Action 和 C++ 环境配置的伙伴来搭建 Github workflow 工作流，实现自动化
@@ -37,9 +54,10 @@ Based on a template from [filipdutescu / modern-cpp-template](https://github.com
 
 如果您感兴趣可以通过邮箱：851892190@qq.com 联系我
 
-## Authors
-* 周思乐 
-## Thanks
+## Performance
+
+
+## Credits 
 * [sylar-yin](https://github.com/sylar-yin) 项目主要模仿了 sylar 的服务器框架设计
 * [filipdutescu](https://github.com/filipdutescu)
 * [陈硕](https://github.com/chenshuo)
