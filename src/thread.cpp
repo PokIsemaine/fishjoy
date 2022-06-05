@@ -13,7 +13,7 @@ namespace fishjoy
 
 
   static thread_local Thread* t_thread = nullptr;
-  static thread_local std::string t_thread_name = "UNKOWN";
+  static thread_local std::string t_thread_name = "UNKNOWN";
 
 
   Thread* Thread::GetThis()
@@ -39,7 +39,7 @@ namespace fishjoy
   {
     if (name.empty())
     {
-      m_name = "UNKNOW";
+      m_name = "UNKNOWN";
     }
     int ret = pthread_create(&m_thread, nullptr, &Thread::run, this);
     if (ret != 0)
