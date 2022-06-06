@@ -165,7 +165,8 @@ namespace fishjoy {
     pthread_rwlock_t m_lock;
   };
 
-  class Mutex :Noncopyable {
+  class Mutex :Noncopyable
+  {
    public:
     using Lock = ScopedLockImpl<Mutex>;
 
