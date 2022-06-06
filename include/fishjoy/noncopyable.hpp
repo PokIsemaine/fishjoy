@@ -2,8 +2,8 @@
 // Created by zsl on 5/30/22.
 //
 
-#ifndef FISHJOY_NOCOPYABLE_HPP
-#define FISHJOY_NOCOPYABLE_HPP
+#ifndef FISHJOY_NONCOPYABLE_HPP
+#define FISHJOY_NONCOPYABLE_HPP
 
 namespace fishjoy {
   class Noncopyable {

@@ -2,13 +2,13 @@
 #define __FISHJOY_LOG_H__
 
 #include <string>
-#include <stdint.h>
+#include <cstdint>
 #include <memory>
 #include <list>
 #include <sstream>
 #include <fstream>
 #include <vector>
-#include <stdarg.h>
+#include <cstdarg>
 #include <map>
 #include "util.hpp"
 #include "singleton.hpp"
@@ -64,7 +64,7 @@ namespace fishjoy {
   //日志事件
   class LogEvent {
    public:
-    typedef std::shared_ptr<LogEvent> ptr;
+    using ptr = std::shared_ptr<LogEvent>;
     LogEvent(std::shared_ptr<Logger> logger, LogLevel::Level level
              ,const char* file, int32_t m_line, uint32_t elapse
              , uint32_t thread_id, uint32_t fiber_id, uint64_t time);
@@ -97,7 +97,7 @@ namespace fishjoy {
 
   class LogEventWrap {
    public:
-    LogEventWrap(LogEvent::ptr e);
+    explicit LogEventWrap(LogEvent::ptr event);
     ~LogEventWrap();
     LogEvent::ptr getEvent() const { return m_event;}
     std::stringstream& getSS();
@@ -108,23 +108,23 @@ namespace fishjoy {
   //日志格式器
   class LogFormatter {
    public:
-    typedef std::shared_ptr<LogFormatter> ptr;
-    LogFormatter(const std::string& pattern);
+    using ptr = std::shared_ptr<LogFormatter>;
+    explicit LogFormatter(const std::string& pattern);
 
     //%t    %thread_id %m%n
     std::string format(std::shared_ptr<Logger> logger, LogLevel::Level level, LogEvent::ptr event);
    public:
     class FormatItem {
      public:
-      typedef std::shared_ptr<FormatItem> ptr;
-      virtual ~FormatItem() {}
+      using ptr = std::shared_ptr<FormatItem>;
+      virtual ~FormatItem() = default;
       virtual void format(std::ostream& os, std::shared_ptr<Logger> logger, LogLevel::Level level, LogEvent::ptr event) = 0;
     };
 
     void init();
 
     bool isError() const { return m_error;}
-    const std::string getPattern() const { return m_pattern;}
+    std::string getPattern() const { return m_pattern;}
    private:
     std::string m_pattern;
     std::vector<FormatItem::ptr> m_items;
@@ -136,8 +136,8 @@ namespace fishjoy {
   class LogAppender {
     friend class Logger;
    public:
-    typedef std::shared_ptr<LogAppender> ptr;
-    virtual ~LogAppender() {}
+    using ptr = std::shared_ptr<LogAppender>;
+    virtual ~LogAppender() = default;
 
     virtual void log(std::shared_ptr<Logger> logger, LogLevel::Level level, LogEvent::ptr event) = 0;
     virtual std::string toYamlString() = 0;
@@ -157,9 +157,9 @@ namespace fishjoy {
   class Logger : public std::enable_shared_from_this<Logger> {
     friend class LoggerManager;
    public:
-    typedef std::shared_ptr<Logger> ptr;
+    using ptr = std::shared_ptr<Logger>;
 
-    Logger(const std::string& name = "root");
+    explicit Logger(const std::string& name = "root");
     void log(LogLevel::Level level, LogEvent::ptr event);
 
     void debug(LogEvent::ptr event);
@@ -192,7 +192,7 @@ namespace fishjoy {
   //输出到控制台的Appender
   class StdoutLogAppender : public LogAppender {
    public:
-    typedef std::shared_ptr<StdoutLogAppender> ptr;
+    using ptr = std::shared_ptr<StdoutLogAppender>;
     void log(Logger::ptr logger, LogLevel::Level level, LogEvent::ptr event) override;
     std::string toYamlString() override;
   };
@@ -200,8 +200,8 @@ namespace fishjoy {
   //定义输出到文件的Appender
   class FileLogAppender : public LogAppender {
    public:
-    typedef std::shared_ptr<FileLogAppender> ptr;
-    FileLogAppender(const std::string& filename);
+    using ptr = std::shared_ptr<FileLogAppender>;
+    explicit FileLogAppender(const std::string& filename);
     void log(Logger::ptr logger, LogLevel::Level level, LogEvent::ptr event) override;
     std::string toYamlString() override;
 
@@ -226,7 +226,7 @@ namespace fishjoy {
     Logger::ptr m_root;
   };
 
-  typedef fishjoy::Singleton<LoggerManager> LoggerMgr;
+  using LoggerMgr = fishjoy::Singleton<LoggerManager>;
 
 }
 

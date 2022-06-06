@@ -52,7 +52,7 @@ namespace fishjoy
 
   Thread::~Thread()
   {
-    if (m_thread)
+    if (m_thread != 0U)
     {
       pthread_detach(m_thread);
     }
@@ -62,7 +62,7 @@ namespace fishjoy
   {
     if (m_thread)
     {
-      int ret = pthread_join(m_thread, nullptr);
+      auto ret = pthread_join(m_thread, nullptr);
       if (ret != 0)
       {
         FISHJOY_LOG_ERROR(g_logger) << "pthread_join thread fail, rt=" << ret << " name=" << m_name;
@@ -80,12 +80,12 @@ namespace fishjoy
     thread->m_id = fishjoy::GetThreadId();
     pthread_setname_np(pthread_self(), thread->m_name.substr(0, 15).c_str());
 
-    std::function<void()> cb;
-    cb.swap(thread->m_callback);
+    std::function<void()> callback;
+    callback.swap(thread->m_callback);
 
     thread->m_semaphore.notify();
 
-    cb();
+    callback();
 
     return nullptr;
   }

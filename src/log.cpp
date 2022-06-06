@@ -24,7 +24,6 @@ namespace fishjoy {
       default:
         return "UNKNOWN";
     }
-    return "UNKNOWN";
   }
 
   LogLevel::Level LogLevel::FromString(const std::string& str) {
@@ -47,8 +46,8 @@ namespace fishjoy {
 #undef XX
   }
 
-  LogEventWrap::LogEventWrap(LogEvent::ptr e)
-      :m_event(e) {
+  LogEventWrap::LogEventWrap(LogEvent::ptr event)
+      :m_event(event) {
   }
 
   LogEventWrap::~LogEventWrap() {
@@ -705,7 +704,7 @@ namespace fishjoy {
                                      if(it == new_value.end()) {
                                        //删除logger
                                        auto logger = FISHJOY_LOG_NAME(i.name);
-                                       logger->setLevel((LogLevel::Level)0);
+                                       logger->setLevel(LogLevel::Level::UNKNOWN);
                                        logger->clearAppenders();
                                      }
                                    }
