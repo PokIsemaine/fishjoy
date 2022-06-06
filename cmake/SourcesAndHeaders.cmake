@@ -24,4 +24,5 @@ set(test_sources
   src/log_test.cpp
   src/log_units_test.cpp
   src/test_thread.cpp
+  src/test_config.cpp
 )
