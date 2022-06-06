@@ -3,18 +3,17 @@
 //
 
 #include "fishjoy/thread.hpp"
-#include "fishjoy/mutex.hpp"
+
 #include "fishjoy/log.hpp"
+#include "fishjoy/mutex.hpp"
 #include "fishjoy/util.hpp"
 
 namespace fishjoy
 {
   static fishjoy::Logger::ptr g_logger = FISHJOY_LOG_NAME("system");
 
-
   static thread_local Thread* t_thread = nullptr;
   static thread_local std::string t_thread_name = "UNKNOWN";
-
 
   Thread* Thread::GetThis()
   {
@@ -89,6 +88,5 @@ namespace fishjoy
 
     return nullptr;
   }
-
 
 }  // namespace fishjoy

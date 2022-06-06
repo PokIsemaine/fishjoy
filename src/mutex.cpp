@@ -3,10 +3,12 @@
 //
 #include "fishjoy/mutex.hpp"
 
-namespace fishjoy {
+namespace fishjoy
+{
   Semaphore::Semaphore(uint32_t count)
   {
-    if(sem_init(&m_semaphore, 0, count) != 0) {
+    if (sem_init(&m_semaphore, 0, count) != 0)
+    {
       throw std::logic_error("sem_init error");
     }
   }
@@ -16,16 +18,19 @@ namespace fishjoy {
     sem_destroy(&m_semaphore);
   }
 
-  void Semaphore::wait() {
-    if(sem_wait(&m_semaphore) != 0) {
+  void Semaphore::wait()
+  {
+    if (sem_wait(&m_semaphore) != 0)
+    {
       throw std::logic_error("sem_wait error");
     }
   }
 
   void Semaphore::notify()
   {
-    if(sem_post(&m_semaphore) != 0) {
+    if (sem_post(&m_semaphore) != 0)
+    {
       throw std::logic_error("sem_post error");
     }
   }
-}
+}  // namespace fishjoy

@@ -6,11 +6,13 @@
 #define FISHJOY_THREAD_HPP
 
 #include <pthread.h>
+#include <semaphore.h>
+
 #include <functional>
 #include <memory>
 #include <string>
 #include <thread>
-#include <semaphore.h>
+
 #include "mutex.hpp"
 #include "noncopyable.hpp"
 
@@ -28,7 +30,6 @@ namespace fishjoy
    private:
     static void* run(void* arg);
 
-
     pid_t m_id = -1;
     pthread_t m_thread = 0;
     std::function<void()> m_callback;
@@ -36,7 +37,6 @@ namespace fishjoy
     Semaphore m_semaphore;
 
    public:  // Getter,Setter,CRUD
-
     pid_t getId() const
     {
       return m_id;
