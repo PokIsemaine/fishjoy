@@ -20,6 +20,15 @@ void fun1() {
 }
 
 void fun2() {
+  while(true) {
+    FISHJOY_LOG_INFO(g_logger) << "xxxxxxxxxxxx";
+  }
+}
+
+void fun3() {
+  while (true) {
+    FISHJOY_LOG_INFO(g_logger) << "============";
+  }
 }
 
 int main(int argc, char** argv) {
@@ -34,6 +43,7 @@ int main(int argc, char** argv) {
   for(int i = 0; i < 5; ++i) {
     threads[i]->join();
   }
+
   FISHJOY_LOG_INFO(g_logger) << "thread test end";
   FISHJOY_LOG_INFO(g_logger) << "count=" << count;
 
