@@ -13,6 +13,7 @@
 
 #include "singleton.hpp"
 #include "util.hpp"
+#include "thread.hpp"
 
 #define FISHJOY_LOG_LEVEL(logger, level)                                                                                    \
   if (logger->getLevel() <= level)                                                                                          \
@@ -196,16 +197,15 @@ namespace fishjoy
 
    public:
     using ptr = std::shared_ptr<LogAppender>;
+    using MutexType = Spinlock;
     virtual ~LogAppender() = default;
 
     virtual void log(std::shared_ptr<Logger> logger, LogLevel::Level level, LogEvent::ptr event) = 0;
     virtual std::string toYamlString() = 0;
 
     void setFormatter(LogFormatter::ptr val);
-    LogFormatter::ptr getFormatter() const
-    {
-      return m_formatter;
-    }
+
+    LogFormatter::ptr getFormatter();
 
     LogLevel::Level getLevel() const
     {
@@ -220,15 +220,18 @@ namespace fishjoy
     LogLevel::Level m_level = LogLevel::DEBUG;
     bool m_hasFormatter = false;
     LogFormatter::ptr m_formatter;
+    MutexType m_mutex;
   };
 
   //日志器
   class Logger : public std::enable_shared_from_this<Logger>
   {
     friend class LoggerManager;
+    using MutexType = Spinlock;
 
    public:
     using ptr = std::shared_ptr<Logger>;
+    using Mutex = Spinlock;
 
     explicit Logger(const std::string& name = "root");
     void log(LogLevel::Level level, LogEvent::ptr event);
@@ -242,6 +245,7 @@ namespace fishjoy
     void addAppender(LogAppender::ptr appender);
     void delAppender(LogAppender::ptr appender);
     void clearAppenders();
+
     LogLevel::Level getLevel() const
     {
       return m_level;
@@ -268,6 +272,7 @@ namespace fishjoy
     std::list<LogAppender::ptr> m_appenders;  // Appender集合
     LogFormatter::ptr m_formatter;
     Logger::ptr m_root;
+    MutexType m_mutex;
   };
 
   //输出到控制台的Appender
@@ -294,6 +299,7 @@ namespace fishjoy
    private:
     std::string m_filename;
     std::ofstream m_filestream;
+    uint64_t m_lastTime = 0;
   };
 
   class LoggerManager
@@ -301,6 +307,7 @@ namespace fishjoy
    public:
     LoggerManager();
     Logger::ptr getLogger(const std::string& name);
+    using MutexType = Spinlock;
 
     void init();
     Logger::ptr getRoot() const
@@ -313,6 +320,7 @@ namespace fishjoy
    private:
     std::map<std::string, Logger::ptr> m_loggers;
     Logger::ptr m_root;
+    MutexType m_mutex;
   };
 
   using LoggerMgr = fishjoy::Singleton<LoggerManager>;

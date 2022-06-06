@@ -83,17 +83,19 @@ namespace fishjoy
     return m_event->getSS();
   }
 
-  void LogAppender::setFormatter(LogFormatter::ptr val)
-  {
+  void LogAppender::setFormatter(LogFormatter::ptr val) {
+    MutexType::Lock lock(m_mutex);
     m_formatter = val;
-    if (m_formatter)
-    {
+    if(m_formatter) {
       m_hasFormatter = true;
-    }
-    else
-    {
+    } else {
       m_hasFormatter = false;
     }
+  }
+
+  LogFormatter::ptr LogAppender::getFormatter() {
+    MutexType::Lock lock(m_mutex);
+    return m_formatter;
   }
 
   class MessageFormatItem : public LogFormatter::FormatItem
@@ -286,10 +288,12 @@ namespace fishjoy
 
   void Logger::setFormatter(LogFormatter::ptr val)
   {
+    MutexType::Lock lock(m_mutex);
     m_formatter = val;
 
     for (auto& i : m_appenders)
     {
+      MutexType::Lock ll(i->m_mutex);
       if (!i->m_hasFormatter)
       {
         i->m_formatter = m_formatter;
@@ -311,6 +315,7 @@ namespace fishjoy
 
   std::string Logger::toYamlString()
   {
+    MutexType::Lock lock(m_mutex);
     YAML::Node node;
     node["name"] = m_name;
     if (m_level != LogLevel::UNKNOWN)
@@ -333,13 +338,16 @@ namespace fishjoy
 
   LogFormatter::ptr Logger::getFormatter()
   {
+    MutexType::Lock lock(m_mutex);
     return m_formatter;
   }
 
   void Logger::addAppender(LogAppender::ptr appender)
   {
+    MutexType::Lock lock(m_mutex);
     if (!appender->getFormatter())
     {
+      MutexType::Lock ll(appender->m_mutex);
       appender->m_formatter = m_formatter;
     }
     m_appenders.push_back(appender);
@@ -347,6 +355,7 @@ namespace fishjoy
 
   void Logger::delAppender(LogAppender::ptr appender)
   {
+    MutexType::Lock lock(m_mutex);
     for (auto it = m_appenders.begin(); it != m_appenders.end(); ++it)
     {
       if (*it == appender)
@@ -359,6 +368,7 @@ namespace fishjoy
 
   void Logger::clearAppenders()
   {
+    MutexType::Lock lock(m_mutex);
     m_appenders.clear();
   }
 
@@ -367,6 +377,7 @@ namespace fishjoy
     if (level >= m_level)
     {
       auto self = shared_from_this();
+      MutexType::Lock lock(m_mutex);
       if (!m_appenders.empty())
       {
         for (auto& i : m_appenders)
@@ -411,16 +422,23 @@ namespace fishjoy
     reopen();
   }
 
-  void FileLogAppender::log(std::shared_ptr<Logger> logger, LogLevel::Level level, LogEvent::ptr event)
-  {
-    if (level >= m_level)
-    {
-      m_filestream << m_formatter->format(logger, level, event);
+  void FileLogAppender::log(std::shared_ptr<Logger> logger, LogLevel::Level level, LogEvent::ptr event) {
+    if(level >= m_level) {
+      uint64_t now = time(0);
+      if(now != m_lastTime) {
+        reopen();
+        m_lastTime = now;
+      }
+      MutexType::Lock lock(m_mutex);
+      if(!(m_filestream << m_formatter->format(logger, level, event))) {
+        std::cout << "error" << std::endl;
+      }
     }
   }
 
   std::string FileLogAppender::toYamlString()
   {
+    MutexType::Lock lock(m_mutex);
     YAML::Node node;
     node["type"] = "FileLogAppender";
     node["file"] = m_filename;
@@ -439,6 +457,7 @@ namespace fishjoy
 
   bool FileLogAppender::reopen()
   {
+    MutexType::Lock lock(m_mutex);
     if (m_filestream)
     {
       m_filestream.close();
@@ -451,12 +470,14 @@ namespace fishjoy
   {
     if (level >= m_level)
     {
+      MutexType::Lock lock(m_mutex);
       std::cout << m_formatter->format(logger, level, event);
     }
   }
 
   std::string StdoutLogAppender::toYamlString()
   {
+    MutexType::Lock lock(m_mutex);
     YAML::Node node;
     node["type"] = "StdoutLogAppender";
     if (m_level != LogLevel::UNKNOWN)
@@ -627,6 +648,7 @@ namespace fishjoy
 
   Logger::ptr LoggerManager::getLogger(const std::string& name)
   {
+    MutexType::Lock lock(m_mutex);
     auto it = m_loggers.find(name);
     if (it != m_loggers.end())
     {
@@ -880,6 +902,7 @@ namespace fishjoy
 
   std::string LoggerManager::toYamlString()
   {
+    MutexType::Lock lock(m_mutex);
     YAML::Node node;
     for (auto& i : m_loggers)
     {
