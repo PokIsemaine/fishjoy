@@ -38,11 +38,11 @@ int main(int argc, char** argv) {
   fishjoy::Config::LoadFromYaml(root);
 
   std::vector<fishjoy::Thread::ptr> thrs;
-  for(int i = 0; i < 2; ++i) {
+  for(int i = 0; i < 1; ++i) {
     fishjoy::Thread::ptr thr(new fishjoy::Thread(&fun2, "name_" + std::to_string(i * 2)));
-    fishjoy::Thread::ptr thr2(new fishjoy::Thread(&fun3, "name_" + std::to_string(i * 2 + 1)));
+//    fishjoy::Thread::ptr thr2(new fishjoy::Thread(&fun3, "name_" + std::to_string(i * 2 + 1)));
     thrs.push_back(thr);
-    thrs.push_back(thr2);
+//    thrs.push_back(thr2);
   }
 
   for(size_t i = 0; i < thrs.size(); ++i) {

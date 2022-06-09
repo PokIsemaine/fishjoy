@@ -309,7 +309,6 @@ namespace fishjoy
       std::cout << "Logger setFormatter name=" << m_name << " value=" << val << " invalid formatter" << std::endl;
       return;
     }
-    // m_formatter = new_val;
     setFormatter(new_val);
   }
 
@@ -826,7 +825,6 @@ namespace fishjoy
     LogIniter()
     {
       g_log_defines->addListener(
-          0xF1E231,
           [](const std::set<LogDefine>& old_value, const std::set<LogDefine>& new_value)
           {
             FISHJOY_LOG_INFO(FISHJOY_LOG_ROOT()) << "on_logger_conf_changed";
