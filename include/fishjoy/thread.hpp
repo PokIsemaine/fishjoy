@@ -16,10 +16,8 @@
 #include "mutex.hpp"
 #include "noncopyable.hpp"
 
-namespace fishjoy
-{
-  class Thread : Noncopyable
-  {
+namespace fishjoy {
+  class Thread : Noncopyable {
    public:
     using ptr = std::shared_ptr<Thread>;
     Thread(std::function<void()> callback, const std::string& name);
@@ -37,14 +35,8 @@ namespace fishjoy
     Semaphore m_semaphore;
 
    public:  // Getter,Setter,CRUD
-    pid_t getId() const
-    {
-      return m_id;
-    }
-    const std::string& getName() const
-    {
-      return m_name;
-    }
+    pid_t getId() const { return m_id; }
+    const std::string& getName() const { return m_name; }
     static Thread* GetThis();
     static const std::string& GetName();
     static void SetName(const std::string& name);

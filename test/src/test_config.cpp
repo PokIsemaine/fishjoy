@@ -220,7 +220,7 @@ void test_log() {
 
 int main(int argc, char** argv) {
   //test_yaml();
-  //test_config();
+  //test_config();t
   //test_class();
   test_log();
 

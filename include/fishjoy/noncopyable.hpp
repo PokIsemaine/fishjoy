@@ -5,10 +5,8 @@
 #ifndef FISHJOY_NONCOPYABLE_HPP
 #define FISHJOY_NONCOPYABLE_HPP
 
-namespace fishjoy
-{
-  class Noncopyable
-  {
+namespace fishjoy {
+  class Noncopyable {
    public:
     Noncopyable() = default;
     ~Noncopyable() = default;

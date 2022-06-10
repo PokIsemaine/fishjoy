@@ -12,8 +12,8 @@
 #include <vector>
 
 #include "singleton.hpp"
-#include "util.hpp"
 #include "thread.hpp"
+#include "util.hpp"
 
 #define FISHJOY_LOG_LEVEL(logger, level)                                                                                    \
   if (logger->getLevel() <= level)                                                                                          \
@@ -43,33 +43,22 @@
 #define FISHJOY_LOG_ROOT()     fishjoy::LoggerMgr::GetInstance()->getRoot()
 #define FISHJOY_LOG_NAME(name) fishjoy::LoggerMgr::GetInstance()->getLogger(name)
 
-namespace fishjoy
-{
+namespace fishjoy {
 
   class Logger;
   class LoggerManager;
 
   //日志级别
-  class LogLevel
-  {
+  class LogLevel {
    public:
-    enum Level
-    {
-      UNKNOWN = 0,
-      DEBUG = 1,
-      INFO = 2,
-      WARN = 3,
-      ERROR = 4,
-      FATAL = 5
-    };
+    enum Level { UNKNOWN = 0, DEBUG = 1, INFO = 2, WARN = 3, ERROR = 4, FATAL = 5 };
 
     static const char* ToString(LogLevel::Level level);
     static LogLevel::Level FromString(const std::string& str);
   };
 
   //日志事件
-  class LogEvent
-  {
+  class LogEvent {
    public:
     using ptr = std::shared_ptr<LogEvent>;
     LogEvent(
@@ -82,47 +71,17 @@ namespace fishjoy
         uint32_t fiber_id,
         uint64_t time);
 
-    const char* getFile() const
-    {
-      return m_file;
-    }
-    int32_t getLine() const
-    {
-      return m_line;
-    }
-    uint32_t getElapse() const
-    {
-      return m_elapse;
-    }
-    uint32_t getThreadId() const
-    {
-      return m_threadId;
-    }
-    uint32_t getFiberId() const
-    {
-      return m_fiberId;
-    }
-    uint64_t getTime() const
-    {
-      return m_time;
-    }
-    std::string getContent() const
-    {
-      return m_ss.str();
-    }
-    std::shared_ptr<Logger> getLogger() const
-    {
-      return m_logger;
-    }
-    LogLevel::Level getLevel() const
-    {
-      return m_level;
-    }
+    const char* getFile() const { return m_file; }
+    int32_t getLine() const { return m_line; }
+    uint32_t getElapse() const { return m_elapse; }
+    uint32_t getThreadId() const { return m_threadId; }
+    uint32_t getFiberId() const { return m_fiberId; }
+    uint64_t getTime() const { return m_time; }
+    std::string getContent() const { return m_ss.str(); }
+    std::shared_ptr<Logger> getLogger() const { return m_logger; }
+    LogLevel::Level getLevel() const { return m_level; }
 
-    std::stringstream& getSS()
-    {
-      return m_ss;
-    }
+    std::stringstream& getSS() { return m_ss; }
     void format(const char* fmt, ...);
     void format(const char* fmt, va_list al);
 
@@ -139,15 +98,11 @@ namespace fishjoy
     LogLevel::Level m_level;
   };
 
-  class LogEventWrap
-  {
+  class LogEventWrap {
    public:
     explicit LogEventWrap(LogEvent::ptr event);
     ~LogEventWrap();
-    LogEvent::ptr getEvent() const
-    {
-      return m_event;
-    }
+    LogEvent::ptr getEvent() const { return m_event; }
     std::stringstream& getSS();
 
    private:
@@ -155,8 +110,7 @@ namespace fishjoy
   };
 
   //日志格式器
-  class LogFormatter
-  {
+  class LogFormatter {
    public:
     using ptr = std::shared_ptr<LogFormatter>;
     explicit LogFormatter(const std::string& pattern);
@@ -165,8 +119,7 @@ namespace fishjoy
     std::string format(std::shared_ptr<Logger> logger, LogLevel::Level level, LogEvent::ptr event);
 
    public:
-    class FormatItem
-    {
+    class FormatItem {
      public:
       using ptr = std::shared_ptr<FormatItem>;
       virtual ~FormatItem() = default;
@@ -175,14 +128,8 @@ namespace fishjoy
 
     void init();
 
-    bool isError() const
-    {
-      return m_error;
-    }
-    std::string getPattern() const
-    {
-      return m_pattern;
-    }
+    bool isError() const { return m_error; }
+    std::string getPattern() const { return m_pattern; }
 
    private:
     std::string m_pattern;
@@ -191,8 +138,7 @@ namespace fishjoy
   };
 
   //日志输出地
-  class LogAppender
-  {
+  class LogAppender {
     friend class Logger;
 
    public:
@@ -207,14 +153,8 @@ namespace fishjoy
 
     LogFormatter::ptr getFormatter();
 
-    LogLevel::Level getLevel() const
-    {
-      return m_level;
-    }
-    void setLevel(LogLevel::Level val)
-    {
-      m_level = val;
-    }
+    LogLevel::Level getLevel() const { return m_level; }
+    void setLevel(LogLevel::Level val) { m_level = val; }
 
    protected:
     LogLevel::Level m_level = LogLevel::DEBUG;
@@ -224,8 +164,7 @@ namespace fishjoy
   };
 
   //日志器
-  class Logger : public std::enable_shared_from_this<Logger>
-  {
+  class Logger : public std::enable_shared_from_this<Logger> {
     friend class LoggerManager;
     using MutexType = Spinlock;
 
@@ -246,19 +185,10 @@ namespace fishjoy
     void delAppender(LogAppender::ptr appender);
     void clearAppenders();
 
-    LogLevel::Level getLevel() const
-    {
-      return m_level;
-    }
-    void setLevel(LogLevel::Level val)
-    {
-      m_level = val;
-    }
+    LogLevel::Level getLevel() const { return m_level; }
+    void setLevel(LogLevel::Level val) { m_level = val; }
 
-    const std::string& getName() const
-    {
-      return m_name;
-    }
+    const std::string& getName() const { return m_name; }
 
     void setFormatter(LogFormatter::ptr val);
     void setFormatter(const std::string& val);
@@ -276,8 +206,7 @@ namespace fishjoy
   };
 
   //输出到控制台的Appender
-  class StdoutLogAppender : public LogAppender
-  {
+  class StdoutLogAppender : public LogAppender {
    public:
     using ptr = std::shared_ptr<StdoutLogAppender>;
     void log(Logger::ptr logger, LogLevel::Level level, LogEvent::ptr event) override;
@@ -285,8 +214,7 @@ namespace fishjoy
   };
 
   //定义输出到文件的Appender
-  class FileLogAppender : public LogAppender
-  {
+  class FileLogAppender : public LogAppender {
    public:
     using ptr = std::shared_ptr<FileLogAppender>;
     explicit FileLogAppender(const std::string& filename);
@@ -302,18 +230,14 @@ namespace fishjoy
     uint64_t m_lastTime = 0;
   };
 
-  class LoggerManager
-  {
+  class LoggerManager {
    public:
     LoggerManager();
     Logger::ptr getLogger(const std::string& name);
     using MutexType = Spinlock;
 
     void init();
-    Logger::ptr getRoot() const
-    {
-      return m_root;
-    }
+    Logger::ptr getRoot() const { return m_root; }
 
     std::string toYamlString();
 
