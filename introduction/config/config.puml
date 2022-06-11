@@ -7,6 +7,22 @@ class ConfigVar
 }
 class Config
 {
+    using ConfigVarMap = std::unordered_map<std::string, ConfigVarBase::ptr>;
+    using RWMutexType = RWMutex;
+
+    Lookup(const std::string& name, const T& default_value, const std::string& description = ""):
+    static typename ConfigVar<T>::ptr Lookup(const std::string& name)
+    static void LoadFromYaml(const YAML::Node& root);
+    static ConfigVarBase::ptr LookupBase(const std::string& name);
+
++Visit(std::function<void(ConfigVarBase::ptr)> callback):void
+
+    static ConfigVarMap& GetDatas()
+
+    static RWMutexType& GetMutex() {
+
+
+
 }
 
 ConfigVarBase <|-- ConfigVar
