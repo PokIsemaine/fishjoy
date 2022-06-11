@@ -12,4 +12,6 @@
 #include "fishjoy/singleton.hpp"
 #include "fishjoy/thread.hpp"
 #include "fishjoy/util.hpp"
+#include "fishjoy/fiber.hpp"
+#include "fishjoy/scheduler.hpp"
 #endif  // FISHJOY_FISHJOY_HPP

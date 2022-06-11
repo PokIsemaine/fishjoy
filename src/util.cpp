@@ -7,17 +7,18 @@
 #include <execinfo.h>
 
 #include "fishjoy/log.hpp"
+#include "fishjoy/fiber.hpp"
 
 namespace fishjoy {
   fishjoy::Logger::ptr g_logger = FISHJOY_LOG_NAME("system");
 
-  pid_t GetThreadId() { return syscall(SYS_gettid); }
+  pid_t GetThreadId() { return static_cast<pid_t>(syscall(SYS_gettid)); }
 
-  uint32_t GetFiberId() { return 0; }
+  uint32_t GetFiberId() { return Fiber::GetFiberId(); }
 
-  void Backtrace(std::vector<std::string>& bt, int size, int skip) {
+  void Backtrace(std::vector<std::string>& bt, size_t size, int skip) {
     void** array = (void**)malloc(sizeof(void*) * size);
-    size_t s = ::backtrace(array, size);
+    size_t s = static_cast<size_t>(::backtrace(array, size));
 
     char** strings = backtrace_symbols(array, s);
     if (strings == NULL) {
@@ -33,7 +34,7 @@ namespace fishjoy {
     free(array);
   }
 
-  std::string BacktraceToString(int size, int skip, const std::string& prefix) {
+  std::string BacktraceToString(unsigned long size, int skip, const std::string& prefix) {
     std::vector<std::string> bt;
     Backtrace(bt, size, skip);
     std::stringstream ss;
