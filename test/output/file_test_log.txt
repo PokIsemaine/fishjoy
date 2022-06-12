@@ -1,0 +1,217 @@
+2022-06-12 11:23:41	6954	0	[FATAL]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:27	file_test fatal log
+2022-06-12 11:23:41	6954	0	[ERROR]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:28	file_test error log
+2022-06-12 11:23:41	6954	0	[INFO]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:29	file_test info log
+2022-06-12 11:23:41	6954	0	[DEBUG]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:30	file_test debug log
+2022-06-12 11:23:58	7000	0	[FATAL]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:27	file_test fatal log
+2022-06-12 11:23:58	7000	0	[ERROR]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:28	file_test error log
+2022-06-12 11:23:58	7000	0	[INFO]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:29	file_test info log
+2022-06-12 11:23:58	7000	0	[DEBUG]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:30	file_test debug log
+2022-06-12 11:27:30	7461	0	[FATAL]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:28	file_test fatal log
+2022-06-12 11:27:30	7461	0	[ERROR]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:29	file_test error log
+2022-06-12 11:27:30	7461	0	[INFO]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:30	file_test info log
+2022-06-12 11:27:30	7461	0	[DEBUG]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:31	file_test debug log
+2022-06-12 11:27:55	7487	0	[FATAL]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:28	file_test fatal log
+2022-06-12 11:27:55	7487	0	[ERROR]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:29	file_test error log
+2022-06-12 11:27:55	7487	0	[INFO]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:30	file_test info log
+2022-06-12 11:27:55	7487	0	[DEBUG]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:31	file_test debug log
+2022-06-12 11:28:10	7528	0	[FATAL]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:28	file_test fatal log
+2022-06-12 11:28:10	7528	0	[ERROR]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:29	file_test error log
+2022-06-12 11:28:10	7528	0	[INFO]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:30	file_test info log
+2022-06-12 11:28:10	7528	0	[DEBUG]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:31	file_test debug log
+2022-06-12 11:28:10	7528	0	[WARN]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:38	macro FISHJOY_LOG_WARN
+2022-06-12 11:28:10	7528	0	[ERROR]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:39	macro FISHJOY_LOG_ERROR
+2022-06-12 11:28:10	7528	0	[FATAL]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:40	macro FISHJOY_LOG_FATAL
+2022-06-12 11:29:21	7629	0	[FATAL]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:30	file_test fatal log
+2022-06-12 11:29:21	7629	0	[ERROR]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:31	file_test error log
+2022-06-12 11:29:21	7629	0	[INFO]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:32	file_test info log
+2022-06-12 11:29:21	7629	0	[DEBUG]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:33	file_test debug log
+2022-06-12 11:29:21	7629	0	[WARN]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:40	macro FISHJOY_LOG_WARN
+2022-06-12 11:29:21	7629	0	[ERROR]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:41	macro FISHJOY_LOG_ERROR
+2022-06-12 11:29:21	7629	0	[FATAL]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:42	macro FISHJOY_LOG_FATAL
+2022-06-12 11:29:32	7656	0	[FATAL]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:30	file_test fatal log
+2022-06-12 11:29:32	7656	0	[ERROR]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:31	file_test error log
+2022-06-12 11:29:32	7656	0	[INFO]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:32	file_test info log
+2022-06-12 11:29:32	7656	0	[DEBUG]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:33	file_test debug log
+2022-06-12 11:29:32	7656	0	[WARN]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:40	macro FISHJOY_LOG_WARN
+2022-06-12 11:29:32	7656	0	[ERROR]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:41	macro FISHJOY_LOG_ERROR
+2022-06-12 11:29:32	7656	0	[FATAL]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:42	macro FISHJOY_LOG_FATAL
+2022-06-12 11:31:43	8043	0	[FATAL]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:30	file_test fatal log
+2022-06-12 11:31:43	8043	0	[ERROR]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:31	file_test error log
+2022-06-12 11:31:43	8043	0	[INFO]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:32	file_test info log
+2022-06-12 11:31:43	8043	0	[DEBUG]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:33	file_test debug log
+2022-06-12 11:31:43	8043	0	[DEBUG]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:37	this is now g_logger loglevel
+2022-06-12 11:31:43	8043	0	[WARN]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:41	macro FISHJOY_LOG_WARN
+2022-06-12 11:31:43	8043	0	[ERROR]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:42	macro FISHJOY_LOG_ERROR
+2022-06-12 11:31:43	8043	0	[FATAL]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:43	macro FISHJOY_LOG_FATAL
+2022-06-12 11:31:46	8071	0	[FATAL]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:30	file_test fatal log
+2022-06-12 11:31:46	8071	0	[ERROR]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:31	file_test error log
+2022-06-12 11:31:46	8071	0	[INFO]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:32	file_test info log
+2022-06-12 11:31:46	8071	0	[DEBUG]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:33	file_test debug log
+2022-06-12 11:31:46	8071	0	[DEBUG]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:37	this is now g_logger loglevel
+2022-06-12 11:31:46	8071	0	[WARN]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:41	macro FISHJOY_LOG_WARN
+2022-06-12 11:31:46	8071	0	[ERROR]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:42	macro FISHJOY_LOG_ERROR
+2022-06-12 11:31:46	8071	0	[FATAL]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:43	macro FISHJOY_LOG_FATAL
+2022-06-12 11:32:28	8401	0	[FATAL]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:30	file_test fatal log
+2022-06-12 11:32:28	8401	0	[ERROR]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:31	file_test error log
+2022-06-12 11:32:28	8401	0	[INFO]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:32	file_test info log
+2022-06-12 11:32:28	8401	0	[DEBUG]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:33	file_test debug log
+2022-06-12 11:32:28	8401	0	[DEBUG]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:37	this is now g_logger loglevel
+2022-06-12 11:32:28	8401	0	[WARN]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:41	macro FISHJOY_LOG_WARN
+2022-06-12 11:32:28	8401	0	[ERROR]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:42	macro FISHJOY_LOG_ERROR
+2022-06-12 11:32:28	8401	0	[FATAL]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:43	macro FISHJOY_LOG_FATAL
+2022-06-12 11:32:30	8442	0	[FATAL]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:30	file_test fatal log
+2022-06-12 11:32:30	8442	0	[ERROR]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:31	file_test error log
+2022-06-12 11:32:30	8442	0	[INFO]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:32	file_test info log
+2022-06-12 11:32:30	8442	0	[DEBUG]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:33	file_test debug log
+2022-06-12 11:32:30	8442	0	[DEBUG]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:37	this is now g_logger loglevel
+2022-06-12 11:32:30	8442	0	[WARN]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:41	macro FISHJOY_LOG_WARN
+2022-06-12 11:32:30	8442	0	[ERROR]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:42	macro FISHJOY_LOG_ERROR
+2022-06-12 11:32:30	8442	0	[FATAL]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:43	macro FISHJOY_LOG_FATAL
+2022-06-12 11:35:14	8829	0	[FATAL]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:30	file_test fatal log
+2022-06-12 11:35:14	8829	0	[ERROR]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:31	file_test error log
+2022-06-12 11:35:14	8829	0	[INFO]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:32	file_test info log
+2022-06-12 11:35:14	8829	0	[DEBUG]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:33	file_test debug log
+2022-06-12 11:35:14	8829	0	[DEBUG]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:37	now g_logger loglevel = DEBUG
+2022-06-12 11:35:14	8829	0	[WARN]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:43	macro FISHJOY_LOG_WARN
+2022-06-12 11:35:14	8829	0	[ERROR]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:44	macro FISHJOY_LOG_ERROR
+2022-06-12 11:35:14	8829	0	[FATAL]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:45	macro FISHJOY_LOG_FATAL
+2022-06-12 11:35:16	8865	0	[FATAL]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:30	file_test fatal log
+2022-06-12 11:35:16	8865	0	[ERROR]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:31	file_test error log
+2022-06-12 11:35:16	8865	0	[INFO]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:32	file_test info log
+2022-06-12 11:35:16	8865	0	[DEBUG]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:33	file_test debug log
+2022-06-12 11:35:16	8865	0	[DEBUG]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:37	now g_logger loglevel = DEBUG
+2022-06-12 11:35:16	8865	0	[WARN]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:43	macro FISHJOY_LOG_WARN
+2022-06-12 11:35:16	8865	0	[ERROR]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:44	macro FISHJOY_LOG_ERROR
+2022-06-12 11:35:16	8865	0	[FATAL]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:45	macro FISHJOY_LOG_FATAL
+2022-06-12 11:35:45	9175	0	[FATAL]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:31	file_test fatal log
+2022-06-12 11:35:45	9175	0	[ERROR]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:32	file_test error log
+2022-06-12 11:35:45	9175	0	[INFO]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:33	file_test info log
+2022-06-12 11:35:45	9175	0	[DEBUG]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:34	file_test debug log
+2022-06-12 11:35:45	9175	0	[DEBUG]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:38	now g_logger loglevel = DEBUG
+2022-06-12 11:35:45	9175	0	[WARN]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:44	macro FISHJOY_LOG_WARN
+2022-06-12 11:35:45	9175	0	[ERROR]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:45	macro FISHJOY_LOG_ERROR
+2022-06-12 11:35:45	9175	0	[FATAL]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:46	macro FISHJOY_LOG_FATAL
+2022-06-12 11:37:21	9273	0	[FATAL]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:33	file_test fatal log
+2022-06-12 11:37:21	9273	0	[ERROR]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:34	file_test error log
+2022-06-12 11:37:21	9273	0	[INFO]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:35	file_test info log
+2022-06-12 11:37:21	9273	0	[DEBUG]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:36	file_test debug log
+2022-06-12 11:37:21	9273	0	[DEBUG]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:42	now g_logger loglevel = DEBUG
+2022-06-12 11:37:21	9273	0	[WARN]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:48	macro FISHJOY_LOG_WARN
+2022-06-12 11:37:21	9273	0	[ERROR]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:49	macro FISHJOY_LOG_ERROR
+2022-06-12 11:37:21	9273	0	[FATAL]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:50	macro FISHJOY_LOG_FATAL
+2022-06-12 11:37:27	9301	0	[FATAL]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:33	file_test fatal log
+2022-06-12 11:37:27	9301	0	[ERROR]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:34	file_test error log
+2022-06-12 11:37:27	9301	0	[INFO]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:35	file_test info log
+2022-06-12 11:37:27	9301	0	[DEBUG]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:36	file_test debug log
+2022-06-12 11:37:27	9301	0	[DEBUG]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:42	now g_logger loglevel = DEBUG
+2022-06-12 11:37:27	9301	0	[WARN]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:48	macro FISHJOY_LOG_WARN
+2022-06-12 11:37:27	9301	0	[ERROR]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:49	macro FISHJOY_LOG_ERROR
+2022-06-12 11:37:27	9301	0	[FATAL]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:50	macro FISHJOY_LOG_FATAL
+2022-06-12 11:38:12	9636	0	[FATAL]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:34	file_test fatal log
+2022-06-12 11:38:12	9636	0	[ERROR]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:35	file_test error log
+2022-06-12 11:38:12	9636	0	[INFO]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:36	file_test info log
+2022-06-12 11:38:12	9636	0	[DEBUG]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:37	file_test debug log
+2022-06-12 11:38:12	9636	0	[DEBUG]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:43	now g_logger loglevel = DEBUG
+2022-06-12 11:38:12	9636	0	[WARN]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:49	macro FISHJOY_LOG_WARN
+2022-06-12 11:38:12	9636	0	[ERROR]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:50	macro FISHJOY_LOG_ERROR
+2022-06-12 11:38:12	9636	0	[FATAL]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:51	macro FISHJOY_LOG_FATAL
+2022-06-12 11:38:23	9663	0	[FATAL]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:34	file_test fatal log
+2022-06-12 11:38:23	9663	0	[ERROR]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:35	file_test error log
+2022-06-12 11:38:23	9663	0	[INFO]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:36	file_test info log
+2022-06-12 11:38:23	9663	0	[DEBUG]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:37	file_test debug log
+2022-06-12 11:38:23	9663	0	[DEBUG]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:43	now g_logger loglevel = DEBUG
+2022-06-12 11:38:23	9663	0	[WARN]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:49	macro FISHJOY_LOG_WARN
+2022-06-12 11:38:23	9663	0	[ERROR]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:50	macro FISHJOY_LOG_ERROR
+2022-06-12 11:38:23	9663	0	[FATAL]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:51	macro FISHJOY_LOG_FATAL
+2022-06-12 11:38:28	9935	0	[FATAL]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:34	file_test fatal log
+2022-06-12 11:38:28	9935	0	[ERROR]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:35	file_test error log
+2022-06-12 11:38:28	9935	0	[INFO]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:36	file_test info log
+2022-06-12 11:38:28	9935	0	[DEBUG]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:37	file_test debug log
+2022-06-12 11:38:28	9935	0	[DEBUG]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:43	now g_logger loglevel = DEBUG
+2022-06-12 11:38:28	9935	0	[WARN]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:49	macro FISHJOY_LOG_WARN
+2022-06-12 11:38:28	9935	0	[ERROR]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:50	macro FISHJOY_LOG_ERROR
+2022-06-12 11:38:28	9935	0	[FATAL]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:51	macro FISHJOY_LOG_FATAL
+2022-06-12 11:39:40	10272	0	[FATAL]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:34	file_test fatal log
+2022-06-12 11:39:40	10272	0	[ERROR]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:35	file_test error log
+2022-06-12 11:39:40	10272	0	[INFO]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:36	file_test info log
+2022-06-12 11:39:40	10272	0	[DEBUG]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:37	file_test debug log
+2022-06-12 11:39:40	10272	0	[DEBUG]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:43	now g_logger loglevel = DEBUG
+2022-06-12 11:39:40	10272	0	[WARN]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:49	macro FISHJOY_LOG_WARN
+2022-06-12 11:39:40	10272	0	[ERROR]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:50	macro FISHJOY_LOG_ERROR
+2022-06-12 11:39:40	10272	0	[FATAL]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:51	macro FISHJOY_LOG_FATAL
+2022-06-12 11:41:04	10644	0	[FATAL]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:34	file_test fatal log
+2022-06-12 11:41:04	10644	0	[ERROR]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:35	file_test error log
+2022-06-12 11:41:04	10644	0	[INFO]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:36	file_test info log
+2022-06-12 11:41:04	10644	0	[DEBUG]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:37	file_test debug log
+2022-06-12 11:41:04	10644	0	[DEBUG]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:43	now g_logger loglevel = DEBUG
+2022-06-12 11:41:04	10644	0	[WARN]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:52	macro FISHJOY_LOG_WARN
+2022-06-12 11:41:04	10644	0	[ERROR]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:53	macro FISHJOY_LOG_ERROR
+2022-06-12 11:41:04	10644	0	[FATAL]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:54	macro FISHJOY_LOG_FATAL
+2022-06-12 11:41:07	10673	0	[FATAL]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:34	file_test fatal log
+2022-06-12 11:41:07	10673	0	[ERROR]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:35	file_test error log
+2022-06-12 11:41:07	10673	0	[INFO]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:36	file_test info log
+2022-06-12 11:41:07	10673	0	[DEBUG]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:37	file_test debug log
+2022-06-12 11:41:07	10673	0	[DEBUG]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:43	now g_logger loglevel = DEBUG
+2022-06-12 11:41:07	10673	0	[WARN]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:52	macro FISHJOY_LOG_WARN
+2022-06-12 11:41:07	10673	0	[ERROR]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:53	macro FISHJOY_LOG_ERROR
+2022-06-12 11:41:07	10673	0	[FATAL]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:54	macro FISHJOY_LOG_FATAL
+2022-06-12 11:41:43	11000	0	[FATAL]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:34	file_test fatal log
+2022-06-12 11:41:43	11000	0	[ERROR]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:35	file_test error log
+2022-06-12 11:41:43	11000	0	[INFO]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:36	file_test info log
+2022-06-12 11:41:43	11000	0	[DEBUG]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:37	file_test debug log
+2022-06-12 11:41:43	11000	0	[DEBUG]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:43	now g_logger loglevel = DEBUG
+2022-06-12 11:41:43	11000	0	[WARN]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:51	macro FISHJOY_LOG_WARN
+2022-06-12 11:41:43	11000	0	[ERROR]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:52	macro FISHJOY_LOG_ERROR
+2022-06-12 11:41:43	11000	0	[FATAL]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:53	macro FISHJOY_LOG_FATAL
+2022-06-12 11:43:49	11365	0	[FATAL]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:34	file_test fatal log
+2022-06-12 11:43:49	11365	0	[ERROR]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:35	file_test error log
+2022-06-12 11:43:49	11365	0	[INFO]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:36	file_test info log
+2022-06-12 11:43:49	11365	0	[DEBUG]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:37	file_test debug log
+2022-06-12 12:29:10	12374	0	[FATAL]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:34	file_test fatal log
+2022-06-12 12:29:10	12374	0	[ERROR]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:35	file_test error log
+2022-06-12 12:29:10	12374	0	[INFO]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:36	file_test info log
+2022-06-12 12:29:10	12374	0	[DEBUG]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:37	file_test debug log
+2022-06-12 12:29:46	12711	0	[FATAL]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:34	file_test fatal log
+2022-06-12 12:29:46	12711	0	[ERROR]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:35	file_test error log
+2022-06-12 12:29:46	12711	0	[INFO]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:36	file_test info log
+2022-06-12 12:29:46	12711	0	[DEBUG]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:37	file_test debug log
+2022-06-12 12:34:20	12948	0	[FATAL]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:35	file_test fatal log
+2022-06-12 12:34:20	12948	0	[ERROR]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:36	file_test error log
+2022-06-12 12:34:20	12948	0	[INFO]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:37	file_test info log
+2022-06-12 12:34:20	12948	0	[DEBUG]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:38	file_test debug log
+2022-06-12 12:34:28	12987	0	[FATAL]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:35	file_test fatal log
+2022-06-12 12:34:28	12987	0	[ERROR]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:36	file_test error log
+2022-06-12 12:34:28	12987	0	[INFO]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:37	file_test info log
+2022-06-12 12:34:28	12987	0	[DEBUG]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:38	file_test debug log
+2022-06-12 12:34:47	13030	0	[FATAL]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:35	file_test fatal log
+2022-06-12 12:34:47	13030	0	[ERROR]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:36	file_test error log
+2022-06-12 12:34:47	13030	0	[INFO]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:37	file_test info log
+2022-06-12 12:34:47	13030	0	[DEBUG]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:38	file_test debug log
+2022-06-12 12:35:22	13090	0	[FATAL]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:35	file_test fatal log
+2022-06-12 12:35:22	13090	0	[ERROR]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:36	file_test error log
+2022-06-12 12:35:22	13090	0	[INFO]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:37	file_test info log
+2022-06-12 12:35:22	13090	0	[DEBUG]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:38	file_test debug log
+2022-06-12 12:35:55	13148	0	[FATAL]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:35	file_test fatal log
+2022-06-12 12:35:55	13148	0	[ERROR]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:36	file_test error log
+2022-06-12 12:35:55	13148	0	[INFO]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:37	file_test info log
+2022-06-12 12:35:55	13148	0	[DEBUG]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:38	file_test debug log
+2022-06-12 12:42:16	13773	0	[FATAL]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:46	appender_test fatal log
+2022-06-12 12:42:16	13773	0	[ERROR]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:47	appender_test error log
+2022-06-12 12:42:16	13773	0	[WARN]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:48	appender_test warn log
+2022-06-12 12:42:16	13773	0	[INFO]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:49	appender_test info log
+2022-06-12 12:42:16	13773	0	[DEBUG]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:50	appender_test debug log
+2022-06-12 12:42:18	13803	0	[FATAL]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:46	appender_test fatal log
+2022-06-12 12:42:18	13803	0	[ERROR]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:47	appender_test error log
+2022-06-12 12:42:18	13803	0	[WARN]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:48	appender_test warn log
+2022-06-12 12:42:18	13803	0	[INFO]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:49	appender_test info log
+2022-06-12 12:42:18	13803	0	[DEBUG]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:50	appender_test debug log
+2022-06-12 12:45:06	14263	0	[FATAL]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:46	appender_test fatal log
+2022-06-12 12:45:06	14263	0	[ERROR]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:47	appender_test error log
+2022-06-12 12:45:06	14263	0	[WARN]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:48	appender_test warn log
+2022-06-12 12:45:06	14263	0	[INFO]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:49	appender_test info log
+2022-06-12 12:45:06	14263	0	[DEBUG]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:50	appender_test debug log
+2022-06-12 12:48:45	14649	0	[FATAL]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:46	appender_test fatal log
+2022-06-12 12:48:45	14649	0	[ERROR]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:47	appender_test error log
+2022-06-12 12:48:45	14649	0	[WARN]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:48	appender_test warn log
+2022-06-12 12:48:45	14649	0	[INFO]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:49	appender_test info log
+2022-06-12 12:48:45	14649	0	[DEBUG]	[root]	/home/zsl/CLionProjects/fishjoy/test/src/log_test.cpp:50	appender_test debug log

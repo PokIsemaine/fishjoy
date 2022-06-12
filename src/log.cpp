@@ -417,7 +417,6 @@ namespace fishjoy {
         if (fmt_status == 0) {
           if (m_pattern[n] == '{') {
             str = m_pattern.substr(i + 1, n - i - 1);
-            // std::cout << "*" << str << std::endl;
             fmt_status = 1;  //解析格式
             fmt_begin = n;
             ++n;
@@ -426,7 +425,6 @@ namespace fishjoy {
         } else if (fmt_status == 1) {
           if (m_pattern[n] == '}') {
             fmt = m_pattern.substr(fmt_begin + 1, n - fmt_begin - 1);
-            // std::cout << "#" << fmt << std::endl;
             fmt_status = 0;
             ++n;
             break;
@@ -481,10 +479,7 @@ namespace fishjoy {
           m_items.push_back(it->second(std::get<1>(i)));
         }
       }
-
-      // std::cout << "(" << std::get<0>(i) << ") - (" << std::get<1>(i) << ") - (" << std::get<2>(i) << ")" << std::endl;
     }
-    // std::cout << m_items.size() << std::endl;
   }
 
   LoggerManager::LoggerManager() {
@@ -539,7 +534,6 @@ namespace fishjoy {
     std::set<LogDefine> operator()(const std::string& v) {
       YAML::Node node = YAML::Load(v);
       std::set<LogDefine> vec;
-      // node["name"].IsDefined()
       for (size_t i = 0; i < node.size(); ++i) {
         auto n = node[i];
         if (!n["name"].IsDefined()) {
@@ -555,7 +549,6 @@ namespace fishjoy {
         }
 
         if (n["appenders"].IsDefined()) {
-          // std::cout << "==" << ld.name << " = " << n["appenders"].size() << std::endl;
           for (size_t x = 0; x < n["appenders"].size(); ++x) {
             auto a = n["appenders"][x];
             if (!a["type"].IsDefined()) {
@@ -584,8 +577,6 @@ namespace fishjoy {
             ld.appenders.push_back(lad);
           }
         }
-        // std::cout << "---" << ld.name << " - "
-        //           << ld.appenders.size() << std::endl;
         vec.insert(ld);
       }
       return vec;
