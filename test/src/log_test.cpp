@@ -1,8 +1,8 @@
 #include <iostream>
-#include "fishjoy/log.hpp"
-#include "fishjoy/util.hpp"
+#include <memory>
+#include "fishjoy/fishjoy.hpp"
 
-#define XX printf("\nxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n");
+#define XX(str) do{printf("\n\nxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx  [test] %s \n\n",str);}while(0);
 
 
 /// 默认 DEBUG 级别
@@ -58,10 +58,17 @@ void level_test() {
   FISHJOY_LOG_LEVEL(g_logger,g_logger->getLevel()) << "now g_logger loglevel = "
                                                   << fishjoy::LogLevel::ToString(g_logger->getLevel());
 
+
   g_logger->setLevel(fishjoy::LogLevel::FromString("testUknown"));
   std::cout << "now g_logger loglevel = " << fishjoy::LogLevel::ToString(g_logger->getLevel()) << std::endl;
 
+
   g_logger->setLevel(fishjoy::LogLevel::FromString("WARN"));
+  fishjoy::FileLogAppender::ptr fileAppender(
+      new fishjoy::FileLogAppender("/home/zsl/CLionProjects/fishjoy/test/output/file_test_log.txt"));
+  fileAppender->setLevel(fishjoy::LogLevel::ERROR);
+  g_logger->addAppender(fileAppender);
+
   FISHJOY_LOG_DEBUG(g_logger) << "macro FISHJOY_LOG_DEBUG"; //不打印
   FISHJOY_LOG_INFO(g_logger)  << "macro FISHJOY_LOG_INFO";  //不打印
   FISHJOY_LOG_WARN(g_logger)  << "macro FISHJOY_LOG_WARN";
@@ -81,6 +88,19 @@ void format_test() {
   FISHJOY_LOG_ERROR(g_logger) << "format_test error log";
   FISHJOY_LOG_INFO(g_logger)  << "format_test info log";
   FISHJOY_LOG_DEBUG(g_logger) << "format_test debug log";
+
+
+  fishjoy::FileLogAppender::ptr fileAppender(
+      new fishjoy::FileLogAppender("/home/zsl/CLionProjects/fishjoy/test/output/file_test_log.txt"));
+  fileAppender->setFormatter(raw_formatter);
+
+  FISHJOY_LOG_FATAL(g_logger) << "format_test fatal log";
+  FISHJOY_LOG_ERROR(g_logger) << "format_test error log";
+  FISHJOY_LOG_ERROR(g_logger) << "format_test error log";
+  FISHJOY_LOG_INFO(g_logger)  << "format_test info log";
+  FISHJOY_LOG_DEBUG(g_logger) << "format_test debug log";
+
+
   g_logger->setFormatter(raw_formatter);
   FISHJOY_LOG_FATAL(g_logger) << "format_test fatal log";
   FISHJOY_LOG_ERROR(g_logger) << "format_test error log";
@@ -91,26 +111,67 @@ void format_test() {
 
 void config_test() {
   INIT();
-  std::cout << g_logger->toYamlString();
-};
+  std::cout << "=============   print fileAppender config" << std::endl;
+  fishjoy::FileLogAppender::ptr fileAppender(
+      new fishjoy::FileLogAppender("/home/zsl/CLionProjects/fishjoy/test/output/file_test_log.txt"));
+  std::cout << fileAppender->toYamlString() << std::endl;
+
+  std::cout << "=============   before" << std::endl;
+
+  std::cout << fishjoy::LoggerMgr::GetInstance()->toYamlString() << std::endl;
+
+  std::cout << "=============   loading" << std::endl;
+  YAML::Node root = YAML::LoadFile("/home/zsl/CLionProjects/fishjoy/conf/log.yml");
+  if(root["root"].IsDefined()) fishjoy::Config::LoadFromYaml(root);
+
+
+  std::cout << "=============   print yaml" << std::endl;
+  std::cout << root << std::endl;
+
+  std::cout << "=============   after" << std::endl;
+  std::cout << fishjoy::LoggerMgr::GetInstance()->toYamlString() << std::endl;
+
+}
 
 void manage_test() {
+  INIT();
+
+  FISHJOY_LOG_NAME("system");
+  std::cout << fishjoy::LoggerMgr::GetInstance()->toYamlString() << std::endl;
+
+  fishjoy::LoggerMgr::GetInstance()->getRoot()->toYamlString();
+
+  fishjoy::LoggerMgr::GetInstance()->getLogger("system")->toYamlString();
+
+}
+
+void raw_log_test() {
+  INIT();
+
+  g_logger->debug( fishjoy::LogEvent::ptr(new fishjoy::LogEvent(g_logger, fishjoy::LogLevel::DEBUG, __FILE__, __LINE__, 0, fishjoy::GetThreadId(), fishjoy::GetFiberId(), time(0), fishjoy::Thread::GetName())));
+  g_logger->info( fishjoy::LogEvent::ptr(new fishjoy::LogEvent(g_logger, fishjoy::LogLevel::INFO, __FILE__, __LINE__, 0, fishjoy::GetThreadId(), fishjoy::GetFiberId(), time(0), fishjoy::Thread::GetName())));
+  g_logger->fatal( fishjoy::LogEvent::ptr(new fishjoy::LogEvent(g_logger, fishjoy::LogLevel::FATAL, __FILE__, __LINE__, 0, fishjoy::GetThreadId(), fishjoy::GetFiberId(), time(0), fishjoy::Thread::GetName())));
+  g_logger->warn( fishjoy::LogEvent::ptr(new fishjoy::LogEvent(g_logger, fishjoy::LogLevel::WARN, __FILE__, __LINE__, 0, fishjoy::GetThreadId(), fishjoy::GetFiberId(), time(0), fishjoy::Thread::GetName())));
+  g_logger->error( fishjoy::LogEvent::ptr(new fishjoy::LogEvent(g_logger, fishjoy::LogLevel::ERROR, __FILE__, __LINE__, 0, fishjoy::GetThreadId(), fishjoy::GetFiberId(), time(0), fishjoy::Thread::GetName())));
 
 }
 
 int main() {
+  XX("macro_stream_test")
   macro_stream_test();
-  XX
+  XX("macro_fmt_test")
   macro_fmt_test();
-  XX
+  XX("appender_test")
   appender_test();
-  XX
+  XX("level_test")
   level_test();
-  XX
+  XX("format_test")
   format_test();
-  XX
+  XX("config_test")
   config_test();
-  XX
+  XX("manage_test")
   manage_test();
+  XX("raw_log_test");
+  raw_log_test();
   return 0;
 }
