@@ -589,7 +589,17 @@ namespace fishjoy {
    */
   class LoggerManager {
    public:
+
+    /**
+     * @brief 构造函数
+     */
     LoggerManager();
+
+    /**
+     * 根据名称获取日志器
+     * @param name 名称
+     * @return 日志器的 shared_ptr
+     */
     Logger::ptr getLogger(const std::string& name);
     using MutexType = Spinlock;
 
