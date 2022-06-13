@@ -312,7 +312,7 @@ namespace fishjoy {
 
   void Logger::fatal(LogEvent::ptr event) { log(LogLevel::FATAL, event); }
 
-  FileLogAppender::FileLogAppender(const std::string& filename) : m_filename(filename) { reopen(); }
+  FileLogAppender::FileLogAppender(const std::string& filepath) : m_filepath(filepath) { reopen(); }
 
   void FileLogAppender::log(std::shared_ptr<Logger> logger, LogLevel::Level level, LogEvent::ptr event) {
     if (level >= m_level) {
@@ -332,7 +332,7 @@ namespace fishjoy {
     MutexType::Lock lock(m_mutex);
     YAML::Node node;
     node["type"] = "FileLogAppender";
-    node["file"] = m_filename;
+    node["file"] = m_filepath;
     if (m_level != LogLevel::UNKNOWN) {
       node["level"] = LogLevel::ToString(m_level);
     }
@@ -349,7 +349,7 @@ namespace fishjoy {
     if (m_filestream) {
       m_filestream.close();
     }
-    m_filestream.open(m_filename, std::ios::app);
+    m_filestream.open(m_filepath, std::ios::app);
     return !!m_filestream;
   }
 

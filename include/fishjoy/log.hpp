@@ -254,7 +254,9 @@ namespace fishjoy {
     LogEvent::ptr m_event;
   };
 
-  //日志格式器
+  /**
+   * @brief 日志格式器
+   */
   class LogFormatter {
    public:
     using ptr = std::shared_ptr<LogFormatter>;
@@ -414,6 +416,7 @@ namespace fishjoy {
      * @brief 写日志
      * @param[in] level 日志级别
      * @param[in] event 日志事件
+     * @details 日志级别需要大于等于日志器级别才能被输出
      */
     void log(LogLevel::Level level, LogEvent::ptr event);
 
@@ -458,15 +461,46 @@ namespace fishjoy {
      */
     void clearAppenders();
 
+    /**
+     * 获取日志器级别
+     * @return 日志器级别
+     */
     LogLevel::Level getLevel() const { return m_level; }
+
+    /**
+     * 设置日志器级别
+     * @param val 日志器级别
+     */
     void setLevel(LogLevel::Level val) { m_level = val; }
 
+    /**
+     * 获取日志器名称
+     * @return 日志器名称
+     */
     const std::string& getName() const { return m_name; }
 
+    /**
+     * @brief LogFormatter::ptr 设置日志器格式
+     * @param val 日志格式器的 shared_ptr
+     */
     void setFormatter(LogFormatter::ptr val);
+
+    /**
+     * @brief 通过字符串设置日志器格式
+     * @param val 日志格式器字符串模板
+     */
     void setFormatter(const std::string& val);
+
+    /**
+     * @brief 获取日志器的日志格式器
+     * @return 指向日志器的日志格式器的 shared_ptr
+     */
     LogFormatter::ptr getFormatter();
 
+    /**
+     * @brief 获取日志器 YAML 配置的字符串形式
+     * @return YAML 配置的字符串形式
+     */
     std::string toYamlString();
 
    private:
@@ -474,52 +508,114 @@ namespace fishjoy {
     std::string m_name;
     ///日志级别
     LogLevel::Level m_level;
-    /// Appender集合
+    /// 输出目标点集合
     std::list<LogAppender::ptr> m_appenders;
+    /// 日志格式器
     LogFormatter::ptr m_formatter;
+    /// 主日志
     Logger::ptr m_root;
+    /// 自旋锁
     MutexType m_mutex;
   };
 
-  //输出到控制台的Appender
+  /**
+   * @brief 输出到控制台的Appender
+   */
   class StdoutLogAppender : public LogAppender {
    public:
     using ptr = std::shared_ptr<StdoutLogAppender>;
+
+    /**
+     * 输出到控制台
+     * @param logger 日志器
+     * @param level 日志级别
+     * @param event 日志事件
+     */
     void log(Logger::ptr logger, LogLevel::Level level, LogEvent::ptr event) override;
+
+    /**
+     * 获取 StdoutLogAppender YAML 形式的配置，并以字符串返回
+     * @return YAML 配置的字符串形式
+     */
     std::string toYamlString() override;
   };
 
-  //定义输出到文件的Appender
+  /**
+   *@ brief 输出到文件的 Appender
+   */
   class FileLogAppender : public LogAppender {
    public:
     using ptr = std::shared_ptr<FileLogAppender>;
-    explicit FileLogAppender(const std::string& filename);
+
+    /**
+     * @brief 构造函数
+     * @param filename 输出文件路径
+     */
+    explicit FileLogAppender(const std::string& filepath);
+
+    /**
+     * 日志输出到文件
+     * @param logger 日志器
+     * @param level 日志级别
+     * @param event 日志时间
+     */
     void log(Logger::ptr logger, LogLevel::Level level, LogEvent::ptr event) override;
+
+    /**
+     * 获取 FileLogAppendr YAML 形式的配置，并以字符串返回
+     * @return YAML 配置的字符串形式
+     */
     std::string toYamlString() override;
 
-    //重新打开文件，文件打开成功返回true
+    /**
+     * @brief 重新打开文件
+     * @return 文件打开成功返回true
+     */
     bool reopen();
 
    private:
-    std::string m_filename;
+    /// 输出文件路径
+    std::string m_filepath;
+
+    /// 输出文件的输出流
     std::ofstream m_filestream;
+
+    /// 最后修改时间
     time_t m_lastTime = 0;
   };
 
+  /**
+   * @brief 日志管理器
+   */
   class LoggerManager {
    public:
     LoggerManager();
     Logger::ptr getLogger(const std::string& name);
     using MutexType = Spinlock;
 
+    /**
+     * @brief 日志管理器来进行初始化
+     */
     void init();
+
+    /**
+     * @brief 获取主日志器
+     * @return 指向主日志器的 shared_ptr
+     */
     Logger::ptr getRoot() const { return m_root; }
 
+    /**
+     * @brief 获取 日志管理器 YAML 形式的配置，并以字符串返回
+     * @return 日志管理器 YAML 配置的字符串形式
+     */
     std::string toYamlString();
 
    private:
+    /// 日志器集合，日志名映射到日志器的 shared_ptr
     std::map<std::string, Logger::ptr> m_loggers;
+    ///主日志器
     Logger::ptr m_root;
+    ///自旋锁
     MutexType m_mutex;
   };
 
