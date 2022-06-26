@@ -271,7 +271,7 @@ namespace fishjoy {
     * @brief 类型转换模板类片特化(YAML String 转换成 std::unordered_map<std::string, T>)
    */
   template<class T>
-  class LexicalCast<std::string, std::unordered_map<std::string, T>> {
+  class LexicalCast<std::string, std::unordered_map<std::string, T>>   {
    public:
     std::unordered_map<std::string, T> operator()(const std::string& v) {
       YAML::Node node = YAML::Load(v);
@@ -445,9 +445,14 @@ namespace fishjoy {
     using RWMutexType = RWMutex;
 
     /**
-     * @brief 查找配置参数
+     * @brief 获取/创建对应参数名的配置参数
      * @param[in] name 配置参数名称
-     * @return 返回配置参数名为name的配置参数
+     * @param[in] default_value 参数默认值
+     * @param[in] description 参数描述
+     * @details 获取参数名为name的配置参数,如果存在直接返回
+     *          如果不存在,创建参数配置并用default_value赋值
+     * @return 返回对应的配置参数,如果参数名存在但是类型不匹配则返回nullptr
+     * @exception 如果参数名包含非法字符[^0-9a-z_.] 抛出异常 std::invalid_argument
      */
     template<class T>
     static typename ConfigVar<T>::ptr
@@ -478,14 +483,9 @@ namespace fishjoy {
     }
 
     /**
-     * @brief 获取/创建对应参数名的配置参数
+     * @brief 查找配置参数
      * @param[in] name 配置参数名称
-     * @param[in] default_value 参数默认值
-     * @param[in] description 参数描述
-     * @details 获取参数名为name的配置参数,如果存在直接返回
-     *          如果不存在,创建参数配置并用default_value赋值
-     * @return 返回对应的配置参数,如果参数名存在但是类型不匹配则返回nullptr
-     * @exception 如果参数名包含非法字符[^0-9a-z_.] 抛出异常 std::invalid_argument
+     * @return 返回配置参数名为name的配置参数
      */
     template<class T>
     static typename ConfigVar<T>::ptr Lookup(const std::string& name) {
@@ -502,10 +502,16 @@ namespace fishjoy {
      * @brief 使用YAML::Node初始化配置模块
      */
     static void LoadFromYaml(const YAML::Node& root);
-    
 
     /**
      * @brief 加载path文件夹里面的配置文件
+     */
+    static  void LoadFromDir(const std::string &path, bool force = false);
+
+
+    /**
+     * @brief 查找配置参数,返回配置参数的基类
+     * @param[in] name 配置参数名称
      */
     static ConfigVarBase::ptr LookupBase(const std::string& name);
 
@@ -514,6 +520,7 @@ namespace fishjoy {
      * @param[in] cb 配置项回调函数
      */
     static void Visit(std::function<void(ConfigVarBase::ptr)> callback);
+
 
    private:
     /**
