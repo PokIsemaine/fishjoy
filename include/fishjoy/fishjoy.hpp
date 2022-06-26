@@ -14,4 +14,6 @@
 #include "fishjoy/util.hpp"
 #include "fishjoy/fiber.hpp"
 #include "fishjoy/scheduler.hpp"
+#include "fishjoy/env.hpp"
+
 #endif  // FISHJOY_FISHJOY_HPP
