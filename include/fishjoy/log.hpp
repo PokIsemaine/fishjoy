@@ -461,6 +461,11 @@ namespace fishjoy {
      */
     void clearAppenders();
 
+
+    /**
+     * @brief 获取日志目标点集合
+     */
+    std::list<LogAppender::ptr> getAppenders();
     /**
      * 获取日志器级别
      * @return 日志器级别

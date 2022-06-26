@@ -288,6 +288,12 @@ namespace fishjoy {
     m_appenders.clear();
   }
 
+  std::list<LogAppender::ptr> Logger::getAppenders() {
+    MutexType::Lock lock(m_mutex);
+    return m_appenders;
+  }
+
+
   void Logger::log(LogLevel::Level level, LogEvent::ptr event) {
     if (level >= m_level) {
       auto self = shared_from_this();
