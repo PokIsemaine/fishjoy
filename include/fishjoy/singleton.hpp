@@ -5,6 +5,8 @@
 #ifndef FISHJOY_SINGLETON_H
 #define FISHJOY_SINGLETON_H
 
+#include <memory>
+
 namespace fishjoy {
   template<typename T, typename X = void, int N = 0>
   class Singleton {
