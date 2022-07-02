@@ -17,6 +17,8 @@ namespace fishjoy {
     * @brief 协程调度器
     * @details 封装的是N-M的协程调度器
     *          内部有一个线程池,支持协程在线程池里面切换
+    *          1 scheduler ----> N  thread
+    *          1 thread    ----> M  fiber
    */
   class Scheduler {
    public:
@@ -164,10 +166,9 @@ namespace fishjoy {
     std::string m_name;
     /// 互斥锁
     MutexType m_mutex;
+
     /// 线程池
     std::vector<Thread::ptr> m_threads;
-    /// 任务队列
-    std::list<ScheduleTask> m_tasks;
     /// 线程池的线程ID数组
     std::vector<int> m_threadIds;
     /// 工作线程数量，不包含use_caller的主线程
@@ -176,6 +177,10 @@ namespace fishjoy {
     std::atomic<size_t> m_activeThreadCount = {0};
     /// idle线程数
     std::atomic<size_t> m_idleThreadCount = {0};
+
+
+    /// 任务队列
+    std::list<ScheduleTask> m_tasks;
 
     /// 是否use caller
     bool m_useCaller;
