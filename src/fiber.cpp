@@ -18,9 +18,9 @@ namespace fishjoy {
   static std::atomic<uint64_t > s_fiber_id {0};
   /// 全局静态变量，用于统计当前的协程数
   static std::atomic<uint64_t > s_fiber_count {0};
-  /// 线程局部变量，当前线程正在运行的协程
+  /// 线程局部变量，保存 当前线程正在运行的协程 的上下文信息
   static thread_local Fiber* t_fiber = nullptr;
-  /// 线程局部变量，当前线程的主协程，切换到这个协程，就相当于切换到了主线程中运行，智能指针形式
+  /// 线程局部变量，保存 当前线程的主协程 的上下文信息，切换到这个协程，就相当于切换到了主线程中运行，智能指针形式
   static thread_local Fiber::ptr t_thread_fiber = nullptr;
   ///协程栈大小，可通过配置文件获取，默认128k
   static ConfigVar<uint32_t >::ptr g_fiber_stack_size =
@@ -143,7 +143,7 @@ namespace fishjoy {
   }
 
   void Fiber::yield() {
-    /// 协程运行完之后会自动yield一次，用于回到主协程，此时状态已为结束状态
+    // 协程运行完之后会自动yield一次，用于回到主协程，此时状态已为结束状态
     FISHJOY_ASSERT(m_state == RUNNING || m_state == TERM)
     SetThis(t_thread_fiber.get());
     if (m_state != TERM) {
@@ -163,7 +163,9 @@ namespace fishjoy {
 
   }
 
-  //设置当前协程
+  /**
+   * 设置当前协程,
+   */
   void Fiber::SetThis(Fiber* f) {
     t_fiber = f;
   }

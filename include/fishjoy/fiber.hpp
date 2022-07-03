@@ -103,7 +103,7 @@ class Fiber: public std::enable_shared_from_this<Fiber> {
   static uint64_t TotalFibers();
 
   /**
-     * @brief 协程入口函数
+     * @brief 执行协程的入口函数，执行完后自动 yield
    */
   static void MainFunc();
   /**
