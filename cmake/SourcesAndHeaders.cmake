@@ -7,6 +7,7 @@ set(sources
 	src/fiber.cpp
 	src/scheduler.cpp
 	src/env.cpp
+	src/iomanager.cpp
 )
 
 set(exe_sources
@@ -24,6 +25,7 @@ set(headers
 	include/fishjoy/fiber.hpp
 	include/fishjoy/scheduler.hpp
 	include/fishjoy/env.hpp
+	include/fishjoy/iomanager.hpp
 )
 
 set(test_sources
