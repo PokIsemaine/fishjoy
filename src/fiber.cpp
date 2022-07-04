@@ -63,7 +63,8 @@ namespace fishjoy {
    */
   Fiber::Fiber(std::function<void()> callback, size_t stacksize, bool run_in_scheduler)
     :m_id(++s_fiber_id)
-    ,m_callback(callback) {
+    ,m_callback(callback)
+    ,m_runInScheduler(run_in_scheduler) {
     ++s_fiber_count;
     m_stacksize = stacksize ? stacksize : g_fiber_stack_size->getValue();
 
