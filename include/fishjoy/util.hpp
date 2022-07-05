@@ -29,6 +29,12 @@ namespace fishjoy
 
 
   /**
+ * @brief 获取当前启动的毫秒数，参考clock_gettime(2)，使用CLOCK_MONOTONIC_RAW
+   */
+  uint64_t GetElapsedMS();
+
+
+  /**
  * @brief 文件系统操作类
    */
   class FSUtil {

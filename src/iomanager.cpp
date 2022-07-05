@@ -8,11 +8,12 @@
 #include "fishjoy/iomanager.hpp"
 #include "fishjoy/log.hpp"
 #include "fishjoy/macro.hpp"
+#include "fishjoy/timer.hpp"
 
 namespace fishjoy {
   static fishjoy::Logger::ptr g_logger = FISHJOY_LOG_NAME("system");
 
-  enum EpollCtlOp {
+  enum class EpollCtlOp {
   };
 
   static std::ostream &operator<<(std::ostream &os, const EpollCtlOp &op) {
@@ -20,9 +21,9 @@ namespace fishjoy {
 #define XX(ctl) \
     case ctl:   \
         return os << #ctl;
-      XX(EPOLL_CTL_ADD);
-      XX(EPOLL_CTL_MOD);
-      XX(EPOLL_CTL_DEL);
+      XX(EPOLL_CTL_ADD)
+      XX(EPOLL_CTL_MOD)
+      XX(EPOLL_CTL_DEL)
 #undef XX
       default:
         return os << (int)op;
@@ -42,19 +43,19 @@ namespace fishjoy {
         os << #E;      \
         first = false; \
     }
-    XX(EPOLLIN);
-    XX(EPOLLPRI);
-    XX(EPOLLOUT);
-    XX(EPOLLRDNORM);
-    XX(EPOLLRDBAND);
-    XX(EPOLLWRNORM);
-    XX(EPOLLWRBAND);
-    XX(EPOLLMSG);
-    XX(EPOLLERR);
-    XX(EPOLLHUP);
-    XX(EPOLLRDHUP);
-    XX(EPOLLONESHOT);
-    XX(EPOLLET);
+    XX(EPOLLIN)
+    XX(EPOLLPRI)
+    XX(EPOLLOUT)
+    XX(EPOLLRDNORM)
+    XX(EPOLLRDBAND)
+    XX(EPOLLWRNORM)
+    XX(EPOLLWRBAND)
+    XX(EPOLLMSG)
+    XX(EPOLLERR)
+    XX(EPOLLHUP)
+    XX(EPOLLRDHUP)
+    XX(EPOLLONESHOT)
+    XX(EPOLLET)
 #undef XX
     return os;
   }
@@ -66,7 +67,7 @@ namespace fishjoy {
       case IOManager::WRITE:
         return write;
       default:
-        FISHJOY_ASSERT2(false, "getContext");
+        FISHJOY_ASSERT2(false, "getContext")
     }
     throw std::invalid_argument("getContext invalid event");
   }
@@ -79,7 +80,7 @@ namespace fishjoy {
 
   void IOManager::FdContext::triggerEvent(Event event) {
     // 待触发事件必须已被注册过
-    FISHJOY_ASSERT(event & event);
+    FISHJOY_ASSERT(event & event)
 
     /**
      * 清除该事件，表示不再关注该事件了
@@ -101,10 +102,10 @@ namespace fishjoy {
   IOManager::IOManager(size_t threads, bool user_caller, const std::string &name)
     : Scheduler(threads, user_caller, name) {
     m_epfd = epoll_create(5000);
-    FISHJOY_ASSERT(m_epfd > 0);
+    FISHJOY_ASSERT(m_epfd > 0)
 
     int rt = pipe(m_tickleFds);
-    FISHJOY_ASSERT(!rt);
+    FISHJOY_ASSERT(!rt)
 
     // 关注 pipe 读句柄的可读事件， 用于 tickle 协程
     epoll_event event;
@@ -114,10 +115,10 @@ namespace fishjoy {
 
     // 非阻塞方式，配合边缘触发
     rt = fcntl(m_tickleFds[0], F_SETFL, O_NONBLOCK);
-    FISHJOY_ASSERT(!rt);
+    FISHJOY_ASSERT(!rt)
 
     rt = epoll_ctl(m_epfd, EPOLL_CTL_ADD, m_tickleFds[0], &event);
-    FISHJOY_ASSERT(!rt);
+    FISHJOY_ASSERT(!rt)
 
     contextResize(32);
 
@@ -168,7 +169,7 @@ namespace fishjoy {
       FISHJOY_LOG_ERROR(g_logger) << "addEvent assert fd=" << fd
                                 << " event=" << (EPOLL_EVENTS)event
                                 << " fd_ctx.event=" << (EPOLL_EVENTS)fd_ctx->events;
-      FISHJOY_ASSERT(!(fd_ctx->events & event));
+      FISHJOY_ASSERT(!(fd_ctx->events & event))
     }
 
     // 将新的事件加入epoll_wait，使用epoll_event的私有指针存储FdContext的位置
@@ -192,7 +193,7 @@ namespace fishjoy {
     // 找到这个fd的event事件对应的EventContext，对其中的scheduler, cb, fiber进行赋值
     fd_ctx->events                     = (Event)(fd_ctx->events | event);
     FdContext::EventContext &event_ctx = fd_ctx->getEventContext(event);
-    FISHJOY_ASSERT(!event_ctx.scheduler && !event_ctx.fiber && !event_ctx.cb);
+    FISHJOY_ASSERT(!event_ctx.scheduler && !event_ctx.fiber && !event_ctx.cb)
 
     // 赋值scheduler和回调函数，如果回调函数为空，则把当前协程当成回调执行体
     event_ctx.scheduler = Scheduler::GetThis();
@@ -200,7 +201,7 @@ namespace fishjoy {
       event_ctx.cb.swap(callback);
     } else {
       event_ctx.fiber = Fiber::GetThis();
-      FISHJOY_ASSERT2(event_ctx.fiber->getState() == Fiber::RUNNING, "state=" << event_ctx.fiber->getState());
+      FISHJOY_ASSERT2(event_ctx.fiber->getState() == Fiber::RUNNING, "state=" << event_ctx.fiber->getState())
     }
     return 0;
   }
@@ -336,7 +337,7 @@ namespace fishjoy {
       return;
     }
     int rt = write(m_tickleFds[1], "T", 1);
-    FISHJOY_ASSERT(rt == 1);
+    FISHJOY_ASSERT(rt == 1)
   }
 
   bool IOManager::stopping() {
@@ -352,16 +353,16 @@ namespace fishjoy {
   }
 
   /**
- * 调度器无调度任务时会阻塞idle协程上，对IO调度器而言，idle状态应该关注两件事，一是有没有新的调度任务，对应Schduler::schedule()，
- * 如果有新的调度任务，那应该立即退出idle状态，并执行对应的任务；二是关注当前注册的所有IO事件有没有触发，如果有触发，那么应该执行
- * IO事件对应的回调函数
+   * 调度器无调度任务时会阻塞idle协程上，对IO调度器而言，idle状态应该关注两件事，一是有没有新的调度任务，对应Scheduler::schedule()，
+   * 如果有新的调度任务，那应该立即退出idle状态，并执行对应的任务；二是关注当前注册的所有IO事件有没有触发，如果有触发，那么应该执行
+   * IO事件对应的回调函数
    */
   void IOManager::idle() {
     FISHJOY_LOG_DEBUG(g_logger) << "idle";
 
-    // 一次epoll_wait最多检测256个就绪事件，如果就绪事件超过了这个数，那么会在下轮epoll_wati继续处理
-    const uint64_t MAX_EVNETS = 256;
-    epoll_event *events       = new epoll_event[MAX_EVNETS]();
+    // 一次epoll_wait最多检测256个就绪事件，如果就绪事件超过了这个数，那么会在下轮epoll_wait继续处理
+    const uint64_t MAX_EVENTS = 256;
+    epoll_event *events       = new epoll_event[MAX_EVENTS]();
     std::shared_ptr<epoll_event> shared_events(events, [](epoll_event *ptr) {
       delete[] ptr;
     });
@@ -384,7 +385,7 @@ namespace fishjoy {
         } else {
           next_timeout = MAX_TIMEOUT;
         }
-        rt = epoll_wait(m_epfd, events, MAX_EVNETS, (int)next_timeout);
+        rt = epoll_wait(m_epfd, events, MAX_EVENTS, (int)next_timeout);
         if(rt < 0 && errno == EINTR) {
           continue;
         } else {

@@ -84,7 +84,7 @@ namespace fishjoy {
     friend class Timer;
    public:
     /// 读写锁类型
-    typedef RWMutex RWMutexType;
+    using RWMutexType = RWMutex;
 
     /**
      * @brief 构造函数
