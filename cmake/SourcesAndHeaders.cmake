@@ -8,6 +8,7 @@ set(sources
 	src/scheduler.cpp
 	src/env.cpp
 	src/iomanager.cpp
+	src/timer.cpp
 )
 
 set(exe_sources
@@ -26,6 +27,7 @@ set(headers
 	include/fishjoy/scheduler.hpp
 	include/fishjoy/env.hpp
 	include/fishjoy/iomanager.hpp
+	include/fishjoy/timer.hpp
 )
 
 set(test_sources
