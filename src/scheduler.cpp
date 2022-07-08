@@ -5,6 +5,7 @@
 #include "fishjoy/log.hpp"
 #include "fishjoy/macro.hpp"
 #include "fishjoy/fiber.hpp"
+#include "fishjoy/hook.hpp"
 
 
 namespace fishjoy {
@@ -137,7 +138,7 @@ namespace fishjoy {
 
   void Scheduler::run() {
     FISHJOY_LOG_DEBUG(g_logger) << "run";
-//    set_hook_enable(true);
+    set_hook_enable(true);
     setThis();
     if (fishjoy::GetThreadId() != m_rootThread) {
       t_scheduler_fiber = fishjoy::Fiber::GetThis().get();
@@ -149,7 +150,7 @@ namespace fishjoy {
     ScheduleTask task;
     while (true) {
       task.reset();
-      bool tickle_me = false; // 是否tickle其他线程进行任务调度
+      bool tickle_me = false; // 是否 tickle 其他线程进行任务调度
       {
         MutexType::Lock lock(m_mutex);
         auto it = m_tasks.begin();
@@ -204,6 +205,7 @@ namespace fishjoy {
           cb_fiber.reset(new Fiber(task.callback));
         }
         task.reset();
+
         cb_fiber->resume();
         --m_activeThreadCount;
         cb_fiber.reset();
