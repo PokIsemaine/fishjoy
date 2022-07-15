@@ -9,6 +9,8 @@ set(sources
 	src/env.cpp
 	src/iomanager.cpp
 	src/timer.cpp
+	src/address.cpp
+	src/socket.cpp
 )
 
 set(exe_sources
@@ -28,6 +30,8 @@ set(headers
 	include/fishjoy/env.hpp
 	include/fishjoy/iomanager.hpp
 	include/fishjoy/timer.hpp
+	include/fishjoy/address.hpp
+	include/fishjoy/socket.hpp
 )
 
 set(test_sources
