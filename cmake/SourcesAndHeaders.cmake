@@ -11,6 +11,11 @@ set(sources
 	src/timer.cpp
 	src/address.cpp
 	src/socket.cpp
+	src/bytearray.cpp
+	src/hook.cpp
+	src/fd_manager.cpp
+	src/tcp_server.cpp
+	src/stream.cpp
 )
 
 set(exe_sources
@@ -32,12 +37,17 @@ set(headers
 	include/fishjoy/timer.hpp
 	include/fishjoy/address.hpp
 	include/fishjoy/socket.hpp
+	include/fishjoy/bytearray.hpp
+	include/fishjoy/hook.hpp
+	include/fishjoy/fd_manager.hpp
+	include/fishjoy/tcp_server.hpp
+	include/fishjoy/stream.hpp
 )
 
 set(test_sources
-  	src/test_log.cpp
+#  	src/test_log.cpp
 #  	src/test_thread.cpp
-	src/test_config.cpp
+#	src/test_config.cpp
 #	src/test_fiber.cpp
 #	src/test_fiber2.cpp
 #  	src/test_scheduler.cpp
