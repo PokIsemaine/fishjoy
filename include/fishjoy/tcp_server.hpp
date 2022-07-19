@@ -22,7 +22,7 @@ namespace fishjoy {
  */
 class TcpServer : public  std::enable_shared_from_this<TcpServer>
                 , Noncopyable {
-
+ public:
   using ptr = std::shared_ptr<TcpServer>;
 
   /**
