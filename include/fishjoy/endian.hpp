@@ -12,6 +12,9 @@
 #define FISHJOY_LITTLE_ENDIAN 1
 #define FISHJOY_BIG_ENDIAN 2
 
+// TODO std::endian https://en.cppreference.com/w/cpp/types/endian
+// TODO std::byte https://en.cppreference.com/w/cpp/types/byte
+// TODO std::byteswap https://en.cppreference.com/w/cpp/numeric/byteswap 手动实现
 namespace fishjoy {
 
   /**
@@ -51,7 +54,7 @@ namespace fishjoy {
 #if FISHJOY_BYTE_ORDER == FISHJOY_BIG_ENDIAN
 
   /**
- * @brief 只在小端机器上执行byteswap, 在大端机器上什么都不做
+    * @brief 只在小端机器上执行byteswap, 在大端机器上什么都不做
    */
   template <class T>
   T byteswapOnLittleEndian(T t) {
@@ -59,7 +62,7 @@ namespace fishjoy {
   }
 
   /**
- * @brief 只在大端机器上执行byteswap, 在小端机器上什么都不做
+    * @brief 只在大端机器上执行byteswap, 在小端机器上什么都不做
    */
   template <class T>
   T byteswapOnBigEndian(T t) {
@@ -68,7 +71,7 @@ namespace fishjoy {
 #else
 
   /**
- * @brief 只在小端机器上执行byteswap, 在大端机器上什么都不做
+    * @brief 只在小端机器上执行byteswap, 在大端机器上什么都不做
    */
   template <class T>
   T byteswapOnLittleEndian(T t) {
@@ -76,7 +79,7 @@ namespace fishjoy {
   }
 
   /**
- * @brief 只在大端机器上执行byteswap, 在小端机器上什么都不做
+    * @brief 只在大端机器上执行byteswap, 在小端机器上什么都不做
    */
   template <class T>
   T byteswapOnBigEndian(T t) {

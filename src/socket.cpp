@@ -7,7 +7,6 @@
 #include "fishjoy/log.hpp"
 #include "fishjoy/macro.hpp"
 #include "fishjoy/hook.hpp"
-#include <limits.h>
 
 namespace fishjoy {
 

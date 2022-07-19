@@ -24,6 +24,7 @@ namespace fishjoy {
       const std::string& prefix,
       const YAML::Node& node,
       std::list<std::pair<std::string, const YAML::Node>>& output) {
+    // TODO 消除硬编码 constexpr
     if (prefix.find_first_not_of("abcdefghikjlmnopqrstuvwxyz._012345678") != std::string::npos) {
       FISHJOY_LOG_ERROR(FISHJOY_LOG_ROOT()) << "Config invalid name: " << prefix << " : " << node;
       return;
@@ -67,9 +68,9 @@ namespace fishjoy {
   static fishjoy::Mutex s_mutex;
   
   void Config::LoadFromDir(const std::string &path, bool force) {
-    std::string absoulte_path = fishjoy::EnvMgr::GetInstance()->getAbsolutePath(path);
+    std::string absolute_path = fishjoy::EnvMgr::GetInstance()->getAbsolutePath(path);
     std::vector<std::string> files;
-    FSUtil::ListAllFile(files, absoulte_path, ".yml");
+    FSUtil::ListAllFile(files, absolute_path, ".yml");
 
     for (auto &i : files) {
       {

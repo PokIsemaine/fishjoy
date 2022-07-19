@@ -39,7 +39,7 @@ class IOManager : public Scheduler, public TimerManager {
     /**
          * @brief 事件上下文类
          * @details fd的每个事件都有一个事件上下文，保存这个事件的回调函数以及执行回调函数的调度器
-         *          sylar对fd事件做了简化，只预留了读事件和写事件，所有的事件都被归类到这两类事件中
+         *          sylar 对fd事件做了简化，只预留了读事件和写事件，所有的事件都被归类到这两类事件中
      */
     struct EventContext {
       /// 执行事件回调的调度器

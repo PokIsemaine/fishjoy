@@ -15,6 +15,9 @@
 #include "thread.hpp"
 #include "util.hpp"
 
+// TODO std::source_location https://en.cppreference.com/w/cpp/utility/source_location
+// TODO 异步日志
+
 /**
  * @brief 使用流式方式将日志级别 level 的日志写入到 logger
  */
@@ -567,7 +570,7 @@ namespace fishjoy {
     void log(Logger::ptr logger, LogLevel::Level level, LogEvent::ptr event) override;
 
     /**
-     * 获取 FileLogAppendr YAML 形式的配置，并以字符串返回
+     * 获取 FileLogAppender YAML 形式的配置，并以字符串返回
      * @return YAML 配置的字符串形式
      */
     std::string toYamlString() override;

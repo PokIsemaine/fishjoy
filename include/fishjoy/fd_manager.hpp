@@ -108,7 +108,7 @@ namespace fishjoy {
    */
   class FdManager {
    public:
-    typedef RWMutex RWMutexType;
+    using RWMutexType = RWMutex;
     /**
      * @brief 无参构造函数
      */

@@ -32,7 +32,7 @@ class TcpServer : public  std::enable_shared_from_this<TcpServer>
      * @param[in] io_worker socket客户端工作的协程调度器
      * @param[in] accept_worker 服务器socket执行接收socket连接的协程调度器
    */
-  TcpServer(fishjoy::IOManager* io_woker = fishjoy::IOManager::GetThis()
+  TcpServer(fishjoy::IOManager* io_worker = fishjoy::IOManager::GetThis()
                 ,fishjoy::IOManager* accept_worker = fishjoy::IOManager::GetThis());
 
   /**

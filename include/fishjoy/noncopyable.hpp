@@ -15,4 +15,4 @@ namespace fishjoy {
   };
 }  // namespace fishjoy
 
-#endif  // FISHJOY_NOCOPYABLE_HPP
+#endif  // FISHJOY_NONCOPYABLE_HPP

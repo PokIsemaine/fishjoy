@@ -373,6 +373,7 @@ namespace fishjoy {
     (uri_chars[(unsigned char)(c)])
 
   //-.0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ_abcdefghijklmnopqrstuvwxyz~
+  // TODO 消除硬编码
   std::string StringUtil::UrlEncode(const std::string& str, bool space_as_plus) {
     static const char *hexdigits = "0123456789ABCDEF";
     std::string* ss = nullptr;

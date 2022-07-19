@@ -63,11 +63,11 @@ namespace fishjoy {
     std::string node;
     const char *service = NULL;
 
-    // 检查 ipv6address serivce
+    // 检查 ipv6 address service
     if (!host.empty() && host[0] == '[') {
       const char *endipv6 = (const char *)memchr(host.c_str() + 1, ']', host.size() - 1);
       if (endipv6) {
-
+        // TODO check out of range
         if (*(endipv6 + 1) == ':') {
           service = endipv6 + 2;
         }
@@ -75,7 +75,7 @@ namespace fishjoy {
       }
     }
 
-    // 检查 node serivce
+    // 检查 node service
     if (node.empty()) {
       service = (const char *)memchr(host.c_str(), ':', host.size());
       if (service) {
