@@ -16,6 +16,7 @@ set(sources
 	src/fd_manager.cpp
 	src/tcp_server.cpp
 	src/stream.cpp
+	src/socket_stream.cpp
 )
 
 set(exe_sources
@@ -42,6 +43,7 @@ set(headers
 	include/fishjoy/fd_manager.hpp
 	include/fishjoy/tcp_server.hpp
 	include/fishjoy/stream.hpp
+	include/fishjoy/socket_stream.hpp
 )
 
 set(test_sources
