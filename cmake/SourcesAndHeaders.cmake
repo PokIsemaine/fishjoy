@@ -16,7 +16,15 @@ set(sources
 	src/fd_manager.cpp
 	src/tcp_server.cpp
 	src/stream.cpp
-	src/socket_stream.cpp
+	src/streams/socket_stream.cpp
+	src/http/http-parser/http_parser.cpp
+	src/http/http.cpp
+	src/http/http_connection.cpp
+	src/http/http_parser.cpp
+	src/http/http_server.cpp
+	src/http/http_session.cpp
+	src/http/servlet.cpp
+	src/uri.cpp
 )
 
 set(exe_sources
@@ -43,7 +51,15 @@ set(headers
 	include/fishjoy/fd_manager.hpp
 	include/fishjoy/tcp_server.hpp
 	include/fishjoy/stream.hpp
-	include/fishjoy/socket_stream.hpp
+	include/fishjoy/streams/socket_stream.hpp
+	include/fishjoy/http/http-parser/http_parser.hpp
+	include/fishjoy/http/http.hpp
+	include/fishjoy/http/http_connection.hpp
+	include/fishjoy/http/http_parse.hpp
+	include/fishjoy/http/http_server.hpp
+	include/fishjoy/http/http_session.hpp
+	include/fishjoy/http/servlet.hpp
+	include/fishjoy/uri.hpp
 )
 
 set(test_sources
