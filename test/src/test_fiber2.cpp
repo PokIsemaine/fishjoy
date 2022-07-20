@@ -6,15 +6,15 @@
 #include <string>
 #include <vector>
 
-fishjoy::Logger::ptr g_logger = FISHJOY_LOG_ROOT();
+fishjoy::Logger::ptr test_logger = FISHJOY_LOG_ROOT();
 
 void run_in_fiber2() {
-  FISHJOY_LOG_INFO(g_logger) << "run_in_fiber2 begin";
-  FISHJOY_LOG_INFO(g_logger) << "run_in_fiber2 end";
+  FISHJOY_LOG_INFO(test_logger) << "run_in_fiber2 begin";
+  FISHJOY_LOG_INFO(test_logger) << "run_in_fiber2 end";
 }
 
 void run_in_fiber() {
-  FISHJOY_LOG_INFO(g_logger) << "run_in_fiber begin";
+  FISHJOY_LOG_INFO(test_logger) << "run_in_fiber begin";
 
   /**
      * 非对称协程，子协程不能创建并运行新的子协程，下面的操作是有问题的，
@@ -23,20 +23,20 @@ void run_in_fiber() {
   fishjoy::Fiber::ptr fiber(new fishjoy::Fiber(run_in_fiber2, 0, false));
   fiber->resume();
 
-  FISHJOY_LOG_INFO(g_logger) << "run_in_fiber end";
+  FISHJOY_LOG_INFO(test_logger) << "run_in_fiber end";
 }
 
 int main(int argc, char *argv[]) {
-//  fishjoy::EnvMgr::GetInstance()->init(argc, argv);
-//  fishjoy::Config::LoadFromConfDir(fishjoy::EnvMgr::GetInstance()->getConfigPath());
+  fishjoy::EnvMgr::GetInstance()->init(argc, argv);
+  fishjoy::Config::LoadFromDir(fishjoy::EnvMgr::GetInstance()->getConfigPath());
 
-  FISHJOY_LOG_INFO(g_logger) << "main begin";
+  FISHJOY_LOG_INFO(test_logger) << "main begin";
 
   fishjoy::Fiber::GetThis();
 
   fishjoy::Fiber::ptr fiber(new fishjoy::Fiber(run_in_fiber, 0, false));
   fiber->resume();
 
-  FISHJOY_LOG_INFO(g_logger) << "main end";
+  FISHJOY_LOG_INFO(test_logger) << "main end";
   return 0;
 }

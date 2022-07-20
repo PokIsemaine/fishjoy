@@ -63,10 +63,13 @@ set(headers
 )
 
 set(test_sources
-#  	src/test_log.cpp
-#  	src/test_thread.cpp
-#	src/test_config.cpp
-#	src/test_fiber.cpp
-#	src/test_fiber2.cpp
-#  	src/test_scheduler.cpp
+  	src/test_log.cpp
+  	src/test_thread.cpp
+	src/test_config.cpp
+	src/test_env.cpp
+	src/test_fiber.cpp
+	src/test_fiber2.cpp
+  	src/test_scheduler.cpp
+	src/test_iomanager.cpp
+	src/test_hook.cpp
 )
