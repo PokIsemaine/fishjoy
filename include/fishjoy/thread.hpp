@@ -13,8 +13,8 @@
 #include <string>
 #include <thread>
 
+#include "fishjoy/utils/noncopyable.hpp"
 #include "mutex.hpp"
-#include "noncopyable.hpp"
 
 namespace fishjoy {
   class Thread : Noncopyable {

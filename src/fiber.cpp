@@ -3,12 +3,13 @@
 //
 
 #include "fishjoy/fiber.hpp"
-#include "fishjoy/config.hpp"
-#include "fishjoy/macro.hpp"
-#include "fishjoy/log.hpp"
-#include "fishjoy/scheduler.hpp"
 
 #include <atomic>
+
+#include "fishjoy/config.hpp"
+#include "fishjoy/log.hpp"
+#include "fishjoy/scheduler.hpp"
+#include "fishjoy/utils/macro.hpp"
 
 namespace fishjoy {
 

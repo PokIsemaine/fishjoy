@@ -5,10 +5,11 @@
 #ifndef FISHJOY_ENV_HPP
 #define FISHJOY_ENV_HPP
 
-#include "singleton.hpp"
-#include "mutex.hpp"
 #include <map>
 #include <vector>
+
+#include "fishjoy/utils/singleton.hpp"
+#include "mutex.hpp"
 
 namespace fishjoy {
   class Env {

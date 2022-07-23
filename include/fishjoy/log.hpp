@@ -11,9 +11,9 @@
 #include <string>
 #include <vector>
 
-#include "singleton.hpp"
+#include "fishjoy/utils/singleton.hpp"
+#include "fishjoy/utils/util.hpp"
 #include "thread.hpp"
-#include "util.hpp"
 
 // TODO std::source_location https://en.cppreference.com/w/cpp/utility/source_location
 // TODO 异步日志

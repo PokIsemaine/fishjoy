@@ -6,7 +6,7 @@
 
 #include "fishjoy/log.hpp"
 #include "fishjoy/mutex.hpp"
-#include "fishjoy/util.hpp"
+#include "fishjoy/utils/util.hpp"
 
 namespace fishjoy {
   static fishjoy::Logger::ptr g_logger = FISHJOY_LOG_NAME("system");

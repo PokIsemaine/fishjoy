@@ -2,14 +2,16 @@
 // Created by zsl on 7/6/22.
 //
 
-#include <dlfcn.h>
 #include "fishjoy/hook.hpp"
+
+#include <dlfcn.h>
+
 #include "fishjoy/config.hpp"
-#include "fishjoy/log.hpp"
 #include "fishjoy/fiber.hpp"
 #include "fishjoy/iomanager.hpp"
-#include "fishjoy/fd_manager.hpp"
-#include "fishjoy/macro.hpp"
+#include "fishjoy/log.hpp"
+#include "fishjoy/net/fd_manager.hpp"
+#include "fishjoy/utils/macro.hpp"
 
 fishjoy::Logger::ptr g_logger = FISHJOY_LOG_NAME("system");
 namespace fishjoy {
@@ -52,7 +54,7 @@ namespace fishjoy {
       return;
     }
 #define XX(name) name ## _f = (name ## _fun)dlsym(RTLD_NEXT, #name);
-    HOOK_FUN(XX);
+    HOOK_FUN(XX)
 #undef XX
   }
 

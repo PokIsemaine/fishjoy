@@ -5,10 +5,12 @@
 #ifndef FISHJOY_URI_HPP
 #define FISHJOY_URI_HPP
 
+#include <stdint.h>
+
 #include <memory>
 #include <string>
-#include <stdint.h>
-#include "address.hpp"
+
+#include "fishjoy/net/address.hpp"
 
 namespace fishjoy {
 

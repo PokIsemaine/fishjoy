@@ -6,7 +6,8 @@
 #define FISHJOY_STREAM_HPP
 
 #include <memory>
-#include "bytearray.hpp"
+
+#include "fishjoy/net/bytearray.hpp"
 
 namespace fishjoy {
 

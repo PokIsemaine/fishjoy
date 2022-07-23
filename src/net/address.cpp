@@ -1,14 +1,16 @@
 //
 // Created by zsl on 7/8/22.
 //
-#include "fishjoy/address.hpp"
-#include "fishjoy/log.hpp"
-#include <sstream>
-#include <netdb.h>
+#include "fishjoy/net/address.hpp"
+
 #include <ifaddrs.h>
+#include <netdb.h>
 #include <stddef.h>
 
-#include "fishjoy/endian.hpp"
+#include <sstream>
+
+#include "fishjoy/log.hpp"
+#include "fishjoy/net/endian.hpp"
 
 namespace fishjoy {
 

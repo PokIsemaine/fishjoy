@@ -9,8 +9,8 @@
 
 #include "fishjoy/iomanager.hpp"
 #include "fishjoy/mutex.hpp"
-#include "fishjoy/socket.hpp"
-#include "fishjoy/stream.hpp"
+#include "fishjoy/net/socket.hpp"
+#include "stream.hpp"
 
 namespace fishjoy {
   /**

@@ -1,14 +1,17 @@
 //
 // Created by zsl on 6/14/22.
 //
-#include <unistd.h>     // for pipe
-#include <sys/epoll.h>  // for epoll
-#include <fcntl.h>      // fcntl()
-#include <cstring>
 #include "fishjoy/iomanager.hpp"
+
+#include <fcntl.h>      // fcntl()
+#include <sys/epoll.h>  // for epoll
+#include <unistd.h>     // for pipe
+
+#include <cstring>
+
 #include "fishjoy/log.hpp"
-#include "fishjoy/macro.hpp"
 #include "fishjoy/timer.hpp"
+#include "fishjoy/utils/macro.hpp"
 
 namespace fishjoy {
   static fishjoy::Logger::ptr g_logger = FISHJOY_LOG_NAME("system");

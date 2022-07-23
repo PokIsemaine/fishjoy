@@ -7,8 +7,9 @@
 
 #include <memory>
 #include <vector>
-#include "mutex.hpp"
-#include "singleton.hpp"
+
+#include "fishjoy/mutex.hpp"
+#include "fishjoy/utils/singleton.hpp"
 
 namespace fishjoy {
 

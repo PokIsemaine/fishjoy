@@ -3,8 +3,9 @@
 //
 
 #include "fishjoy/timer.hpp"
-#include "fishjoy/util.hpp"
-#include "fishjoy/macro.hpp"
+
+#include "fishjoy/utils/macro.hpp"
+#include "fishjoy/utils/util.hpp"
 
 namespace fishjoy {
 

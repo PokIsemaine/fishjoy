@@ -5,15 +5,16 @@
 #ifndef FISHJOY_SERVLET_HPP
 #define FISHJOY_SERVLET_HPP
 
-#include <memory>
 #include <functional>
+#include <memory>
 #include <string>
-#include <vector>
 #include <unordered_map>
+#include <vector>
+
+#include "fishjoy/thread.hpp"
+#include "fishjoy/utils/util.hpp"
 #include "http.hpp"
 #include "http_session.hpp"
-#include "fishjoy/thread.hpp"
-#include "fishjoy/util.hpp"
 
 namespace fishjoy {
   namespace http {
@@ -113,7 +114,7 @@ namespace fishjoy {
     template<class T>
     class ServletCreator : public IServletCreator {
      public:
-      typedef std::shared_ptr<ServletCreator> ptr;
+      using ptr = std::shared_ptr<ServletCreator>;
 
       ServletCreator() {
       }
@@ -148,7 +149,7 @@ namespace fishjoy {
       /**
      * @brief 添加servlet
      * @param[in] uri uri
-     * @param[in] slt serlvet
+     * @param[in] slt servlet
        */
       void addServlet(const std::string& uri, Servlet::ptr slt);
 

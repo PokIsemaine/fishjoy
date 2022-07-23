@@ -5,15 +5,14 @@
 #ifndef FISHJOY_TCP_SERVER_HPP
 #define FISHJOY_TCP_SERVER_HPP
 
-
-#include <memory>
 #include <functional>
-#include "address.hpp"
-#include "iomanager.hpp"
-#include "socket.hpp"
-#include "noncopyable.hpp"
-#include "config.hpp"
+#include <memory>
 
+#include "fishjoy/config.hpp"
+#include "fishjoy/iomanager.hpp"
+#include "fishjoy/net/address.hpp"
+#include "fishjoy/utils/noncopyable.hpp"
+#include "socket.hpp"
 
 namespace fishjoy {
 

@@ -1,7 +1,7 @@
 //
 // Created by zsl on 7/17/22.
 //
-#include "fishjoy/stream.hpp"
+#include "fishjoy/streams/stream.hpp"
 
 namespace fishjoy {
 

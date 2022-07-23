@@ -2,11 +2,11 @@
 // Created by zsl on 6/11/22.
 //
 #include "fishjoy/scheduler.hpp"
-#include "fishjoy/log.hpp"
-#include "fishjoy/macro.hpp"
+
 #include "fishjoy/fiber.hpp"
 #include "fishjoy/hook.hpp"
-
+#include "fishjoy/log.hpp"
+#include "fishjoy/utils/macro.hpp"
 
 namespace fishjoy {
   static fishjoy::Logger::ptr g_logger = FISHJOY_LOG_NAME("system");

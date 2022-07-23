@@ -5,12 +5,14 @@
 #ifndef FISHJOY_SOCKET_HPP
 #define FISHJOY_SOCKET_HPP
 
-#include <memory>
 #include <netinet/tcp.h>
-#include <sys/types.h>
 #include <sys/socket.h>
-#include "fishjoy/address.hpp"
-#include "fishjoy/noncopyable.hpp"
+#include <sys/types.h>
+
+#include <memory>
+
+#include "fishjoy/net/address.hpp"
+#include "fishjoy/utils/noncopyable.hpp"
 
 namespace fishjoy {
 
