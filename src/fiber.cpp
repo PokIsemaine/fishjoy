@@ -25,12 +25,12 @@ namespace fishjoy {
   /// 线程局部变量，当前线程的主协程，切换到这个协程，就相当于切换到了主线程中运行，智能指针形式
   static thread_local Fiber::ptr t_thread_fiber = nullptr;
 
-  //协程栈大小，可通过配置文件获取，默认128k
+  ///协程栈大小，可通过配置文件获取，默认128k
   static ConfigVar<uint32_t>::ptr g_fiber_stack_size =
       Config::Lookup<uint32_t>("fiber.stack_size", 128 * 1024, "fiber stack size");
 
   /**
- * @brief malloc栈内存分配器
+    * @brief malloc栈内存分配器
    */
   class MallocStackAllocator {
    public:
@@ -64,7 +64,7 @@ namespace fishjoy {
   }
 
   /**
- * 获取当前协程，同时充当初始化当前线程主协程的作用，这个函数在使用协程之前要调用一下
+    * 获取当前协程，同时充当初始化当前线程主协程的作用，这个函数在使用协程之前要调用一下
    */
   Fiber::ptr Fiber::GetThis() {
     if (t_fiber) {
