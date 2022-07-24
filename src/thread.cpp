@@ -34,6 +34,9 @@ namespace fishjoy {
       FISHJOY_LOG_ERROR(g_logger) << "pthread_create thread fail, rt=" << ret << " name=" << name;
       throw std::logic_error("pthread_create error");
     }
+    // 通过一个信号量来保证在构造完成之后线程函数一定已经处于运行状态
+    // 构造函数在创建线程后会一直阻塞，直到线程函数运行并且通知信号量
+    // 构造函数才会返回，而构造函数一旦返回，就说明线程函数已经在执行了
     m_semaphore.wait();
   }
 
@@ -63,9 +66,9 @@ namespace fishjoy {
 
     std::function<void()> callback;
     callback.swap(thread->m_callback);
-
+    // 通知构造函数线程函数运行起来了
     thread->m_semaphore.notify();
-
+    // 执行线程函数
     callback();
 
     return nullptr;

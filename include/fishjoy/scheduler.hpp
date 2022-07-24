@@ -53,7 +53,7 @@ namespace fishjoy {
     static Fiber *GetMainFiber();
 
     /**
-     * @brief 添加调度任务
+     * @brief 向任务队列添加调度任务, 添加成功则唤醒 idle 协程
      * @tparam FiberOrCb 调度任务类型，可以是协程对象或函数指针
      * @param[] fc 协程对象或指针
      * @param[] thread 指定运行该任务的线程号，-1表示任意线程
@@ -73,7 +73,7 @@ namespace fishjoy {
     }
 
     /**
-     * @brief 启动调度器
+     * @brief 启动调度器,创建线程池并为每个线程绑定调度函数 Scheduler::run()
      */
     void start();
 
@@ -84,7 +84,7 @@ namespace fishjoy {
 
    protected:
     /**
-       * @brief 通知协程调度器有任务了
+       * @brief 通知协程调度器有任务了，唤醒 idle 协程，实际无特殊动作
      */
     virtual void tickle();
 
@@ -94,7 +94,7 @@ namespace fishjoy {
     void run();
 
     /**
-       * @brief 无任务调度时执行idle协程
+       * @brief 无任务调度时执行 idle 协程, 忙等待
      */
     virtual void idle();
 
@@ -104,7 +104,7 @@ namespace fishjoy {
     virtual bool stopping();
 
     /**
-       * @brief 设置当前的协程调度器
+        * @brief 设置当前的协程调度器
      */
     void setThis();
 
@@ -182,7 +182,7 @@ namespace fishjoy {
     /// 任务队列
     std::list<ScheduleTask> m_tasks;
 
-    /// 是否use caller
+    /// 是否使用调度器所在的线程（caller 线程）来作为调度
     bool m_useCaller;
     /// use_caller为true时，调度器所在线程的调度协程
     Fiber::ptr m_rootFiber;

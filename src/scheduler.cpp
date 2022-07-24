@@ -13,7 +13,7 @@ namespace fishjoy {
   
   /// 当前线程的调度器，同一个调度器下的所有线程共享同一个实例
   static thread_local Scheduler *t_scheduler = nullptr;
-  /// 当前线程的调度协程，每个线程都独有一份
+  /// 当前线程的调度协程，每个线程都独有一份， 线程要靠一个调度协程来调度任务，这个任务可以是协程、也可以是函数
   static thread_local Fiber *t_scheduler_fiber = nullptr;
 
   Scheduler::Scheduler(size_t threads, bool use_caller, const std::string &name) {
@@ -22,16 +22,18 @@ namespace fishjoy {
     m_useCaller = use_caller;
     m_name      = name;
 
+    // 在使用caller线程的情况下，线程数自动减一，并且调度器内部会初始化一个属于caller线程的调度协程并保存起来
+    // 比如，在main函数中创建的调度器，如果use_caller为true，那调度器会初始化一个属于main函数线程的调度协程
     if (use_caller) {
       --threads;
       fishjoy::Fiber::GetThis();
       FISHJOY_ASSERT(GetThis() == nullptr)
       t_scheduler = this;
 
-      /**
-         * caller线程的主协程不会被线程的调度协程run进行调度，而且，线程的调度协程停止时，应该返回caller线程的主协程
-         * 在user caller情况下，把caller线程的主协程暂时保存起来，等调度协程结束时，再resume caller协程
-       */
+
+    // caller 线程的主协程不会被线程的调度协程run进行调度，而且，线程的调度协程停止时，应该返回 caller 线程的主协程
+    // 在user caller 情况下，把caller线程的主协程暂时保存起来，等调度协程结束时，再 resume caller 协程
+
       m_rootFiber.reset(new Fiber(std::bind(&Scheduler::run, this), 0, false));
 
       fishjoy::Thread::SetName(m_name);
@@ -93,6 +95,8 @@ namespace fishjoy {
 
   void Scheduler::idle() {
     FISHJOY_LOG_DEBUG(g_logger) << "idle";
+    // idle协程在协程调度器未停止的情况下只会 yield to hold
+    // 而调度协程又会将idle协程重新swapIn，相当于idle啥也不做直接返回
     while (!stopping()) {
       fishjoy::Fiber::GetThis()->yield();
     }
