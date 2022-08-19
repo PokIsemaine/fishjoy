@@ -35,7 +35,7 @@ class IOManager : public Scheduler, public TimerManager {
      * @details 每个socket fd都对应一个FdContext，包括fd的值，fd上的事件，以及fd的读写事件上下文
    */
   struct FdContext {
-    typedef Mutex MutexType;
+    using MutexType  = Mutex;
     /**
          * @brief 事件上下文类
          * @details fd的每个事件都有一个事件上下文，保存这个事件的回调函数以及执行回调函数的调度器
@@ -189,7 +189,7 @@ class IOManager : public Scheduler, public TimerManager {
   std::atomic<size_t> m_pendingEventCount = {0};
   /// IOManager的Mutex
   RWMutexType m_mutex;
-  /// socket事件上下文的容器
+  /// socket事件上下文的容器，直接用 fd 作为下标与 FdContext 对应
   std::vector<FdContext *> m_fdContexts;
 
 };
