@@ -1,9 +1,11 @@
 //
 // Created by zsl on 7/19/22.
 //
-#include "fishjoy/uri.hpp"
-#include "fishjoy/http/http_parse.hpp"
+#include "fishjoy/net/uri.hpp"
+
 #include <sstream>
+
+#include "fishjoy/http/http_parse.hpp"
 
 namespace fishjoy {
 

@@ -5,6 +5,9 @@
 #ifndef FISHJOY_ASSERT_HPP
 #define FISHJOY_ASSERT_HPP
 
+#include <assert.h>
+#include "fishjoy/utils/macro.hpp"
+
 /// 断言宏封装
 #define FISHJOY_ASSERT(x) \
     if(!(x)) { \

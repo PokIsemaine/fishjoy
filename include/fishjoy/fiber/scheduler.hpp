@@ -5,12 +5,13 @@
 #ifndef FISHJOY_SCHEDULER_HPP
 #define FISHJOY_SCHEDULER_HPP
 
+#include <list>
 #include <memory>
 #include <vector>
-#include <list>
-#include "fiber.hpp"
-#include "thread.hpp"
+
+#include "fishjoy/fiber/fiber.hpp"
 #include "mutex.hpp"
+#include "thread.hpp"
 
 namespace fishjoy {
   /**
@@ -132,6 +133,7 @@ namespace fishjoy {
     }
 
    private:
+    // TODO 二选一用类似 union 的玩意去优化？
     /**
      * @brief 调度任务，协程/函数二选一，可指定在哪个线程上调度
      */

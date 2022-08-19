@@ -2,7 +2,8 @@
 // Created by zsl on 7/19/22.
 //
 #include "fishjoy/http/http_server.hpp"
-#include "fishjoy/log.hpp"
+
+#include "fishjoy/log/log.hpp"
 //#include "servlets/config_servlet.h"
 //#include "servlets/status_servlet.h"
 

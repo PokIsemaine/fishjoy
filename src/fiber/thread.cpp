@@ -2,10 +2,10 @@
 // Created by zsl on 5/29/22.
 //
 
-#include "fishjoy/thread.hpp"
+#include "fishjoy/fiber/thread.hpp"
 
-#include "fishjoy/log.hpp"
-#include "fishjoy/mutex.hpp"
+#include "fishjoy/fiber/mutex.hpp"
+#include "fishjoy/log/log.hpp"
 #include "fishjoy/utils/util.hpp"
 
 namespace fishjoy {

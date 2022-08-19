@@ -8,7 +8,7 @@
 #include <iomanip>
 #include <sstream>
 
-#include "fishjoy/log.hpp"
+#include "fishjoy/log/log.hpp"
 #include "fishjoy/net/endian.hpp"
 
 namespace fishjoy {

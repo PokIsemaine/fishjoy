@@ -5,8 +5,8 @@
 #ifndef FISHJOY_IOMANAGER_HPP
 #define FISHJOY_IOMANAGER_HPP
 
-#include "scheduler.hpp"
-#include "log.hpp"
+#include "fishjoy/fiber/scheduler.hpp"
+#include "fishjoy/log/log.hpp"
 #include "timer.hpp"
 
 namespace fishjoy {

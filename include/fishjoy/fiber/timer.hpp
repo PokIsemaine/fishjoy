@@ -5,10 +5,11 @@
 #ifndef FISHJOY_TIMER_HPP
 #define FISHJOY_TIMER_HPP
 
-#include <memory>
 #include <functional>
-#include "fishjoy/mutex.hpp"
+#include <memory>
 #include <set>
+
+#include "mutex.hpp"
 
 namespace fishjoy {
   class TimerManager;

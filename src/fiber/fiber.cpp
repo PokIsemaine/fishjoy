@@ -2,13 +2,13 @@
 // Created by zsl on 6/1/22.
 //
 
-#include "fishjoy/fiber.hpp"
+#include "fishjoy/fiber/fiber.hpp"
 
 #include <atomic>
 
-#include "fishjoy/config.hpp"
-#include "fishjoy/log.hpp"
-#include "fishjoy/scheduler.hpp"
+#include "fishjoy/config/config.hpp"
+#include "fishjoy/fiber/scheduler.hpp"
+#include "fishjoy/log/log.hpp"
 #include "fishjoy/utils/macro.hpp"
 
 namespace fishjoy {

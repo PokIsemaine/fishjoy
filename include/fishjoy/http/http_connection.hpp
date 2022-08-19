@@ -5,12 +5,12 @@
 #ifndef FISHJOY_HTTP_CONNECTION_HPP
 #define FISHJOY_HTTP_CONNECTION_HPP
 
+#include <list>
+
+#include "fishjoy/fiber/thread.hpp"
+#include "fishjoy/net/uri.hpp"
 #include "fishjoy/streams/socket_stream.hpp"
 #include "http.hpp"
-#include "fishjoy/uri.hpp"
-#include "fishjoy/thread.hpp"
-
-#include <list>
 
 namespace fishjoy {
   namespace http {

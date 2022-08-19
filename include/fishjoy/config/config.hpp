@@ -2,12 +2,14 @@
 #define __FISHJOY_CONFIG_H__
 
 #include <yaml-cpp/yaml.h>
+
 #include <boost/lexical_cast.hpp>
-#include "fishjoy/utils/lexical.hpp"
-#include "fishjoy/log.hpp"
 #include <functional>
 #include <memory>
 #include <sstream>
+
+#include "fishjoy/log/log.hpp"
+#include "fishjoy/utils/lexical.hpp"
 
 namespace fishjoy {
   /**

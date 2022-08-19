@@ -92,7 +92,7 @@ void test_iomanager() {
 
 int main(int argc, char *argv[]) {
  fishjoy::EnvMgr::GetInstance()->init(argc, argv);
- fishjoy::Config::LoadFromConfDir(fishjoy::EnvMgr::GetInstance()->getConfigPath());
+ fishjoy::Config::LoadFromDir(fishjoy::EnvMgr::GetInstance()->getConfigPath());
    
  test_iomanager();
 

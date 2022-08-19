@@ -1,9 +1,10 @@
 //
 // Created by zsl on 5/18/22.
 //
-#include "fishjoy/config.hpp"
-#include "fishjoy/log.hpp"
-#include "fishjoy/env.hpp"
+#include "fishjoy/config/config.hpp"
+
+#include "fishjoy/config/env.hpp"
+#include "fishjoy/log/log.hpp"
 #include "fishjoy/utils/file.hpp"
 
 namespace fishjoy {

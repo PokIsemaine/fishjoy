@@ -5,9 +5,11 @@
 #ifndef FISHJOY_FIBER_HPP
 #define FISHJOY_FIBER_HPP
 
-#include <memory>
-#include <functional>
 #include <ucontext.h>
+
+#include <functional>
+#include <memory>
+
 #include "mutex.hpp"
 #include "thread.hpp"
 

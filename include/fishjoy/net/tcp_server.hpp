@@ -8,8 +8,8 @@
 #include <functional>
 #include <memory>
 
-#include "fishjoy/config.hpp"
-#include "fishjoy/iomanager.hpp"
+#include "fishjoy/config/config.hpp"
+#include "fishjoy/fiber/iomanager.hpp"
 #include "fishjoy/net/address.hpp"
 #include "fishjoy/utils/noncopyable.hpp"
 #include "socket.hpp"
