@@ -4,6 +4,7 @@
 #include "fishjoy/config.hpp"
 #include "fishjoy/log.hpp"
 #include "fishjoy/env.hpp"
+#include "fishjoy/utils/file.hpp"
 
 namespace fishjoy {
 
@@ -24,12 +25,15 @@ namespace fishjoy {
       const std::string& prefix,
       const YAML::Node& node,
       std::list<std::pair<std::string, const YAML::Node>>& output) {
-    // TODO 消除硬编码 constexpr
-    if (prefix.find_first_not_of("abcdefghikjlmnopqrstuvwxyz._012345678") != std::string::npos) {
+
+    constexpr std::string_view valid_name= "abcdefghikjlmnopqrstuvwxyz._012345678";
+    if (prefix.find_first_not_of(valid_name) != std::string::npos) {
       FISHJOY_LOG_ERROR(FISHJOY_LOG_ROOT()) << "Config invalid name: " << prefix << " : " << node;
       return;
     }
+
     output.emplace_back(std::make_pair(prefix, node));
+
     if (node.IsMap()) {
       for (auto it = node.begin(); it != node.end(); ++it) {
         ListAllMember(prefix.empty() ? it->first.Scalar() : prefix + "." + it->first.Scalar(), it->second, output);
@@ -85,11 +89,9 @@ namespace fishjoy {
       try {
         YAML::Node root = YAML::LoadFile(i);
         LoadFromYaml(root);
-        FISHJOY_LOG_INFO(g_logger) << "LoadConfFile file="
-                                 << i << " ok";
+        FISHJOY_LOG_INFO(g_logger) << "LoadConfFile file=" << i << " ok";
       } catch (...) {
-        FISHJOY_LOG_ERROR(g_logger) << "LoadConfFile file="
-                                  << i << " failed";
+        FISHJOY_LOG_ERROR(g_logger) << "LoadConfFile file=" << i << " failed";
       }
     }
   }

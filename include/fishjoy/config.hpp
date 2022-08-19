@@ -230,8 +230,8 @@ namespace fishjoy {
           return nullptr;
         }
       }
-      //TODO 消除硬编码 constexpr
-      if (name.find_first_not_of("abcdefghikjlmnopqrstuvwxyz._012345678") != std::string::npos) {
+      constexpr std::string_view valid_name= "abcdefghikjlmnopqrstuvwxyz._012345678";
+      if (name.find_first_not_of(valid_name) != std::string::npos) {
         FISHJOY_LOG_ERROR(FISHJOY_LOG_ROOT()) << "Lookup name invalid " << name;
         throw std::invalid_argument(name);
       }
