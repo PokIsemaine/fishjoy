@@ -63,12 +63,9 @@ Based on a template from [filipdutescu / modern-cpp-template](https://github.com
 * [zhongluqiang](https://github.com/zhongluqiang)
 * 学校教测试的老师（寻找中...）
 
-## ToDo
-6月目标
-完成线程模块、协程模块、协程调度模块、IO模块
-
-备忘
-* 优化一下日志模块(看一下 muduo 相关的)
-* 找 NEFU 测试相关的老师补一下测试理论，如何表述该项目测试
-* 提升已完成模块的测试覆盖率 >= 90
-* 消除 Clang-Tidy 和 Warning
+## To Do
+8 - 9 月目标
+* 实现双 Buffer 异步日志，提供mmap写文件功能
+* 提供专门的 threadpoll 包括 fixed 模式和 cached 模式
+* 完成日志模块梳理
+* 完善测试和注释
