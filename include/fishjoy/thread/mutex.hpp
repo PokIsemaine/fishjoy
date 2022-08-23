@@ -5,10 +5,7 @@
 #ifndef FISHJOY_MUTEX_HPP
 #define FISHJOY_MUTEX_HPP
 
-#include <semaphore.h>
-
 #include <atomic>
-
 #include "fishjoy/utils/noncopyable.hpp"
 
 //TODO https://en.cppreference.com/w/cpp/thread/counting_semaphore
@@ -16,21 +13,8 @@
 //TODO https://en.cppreference.com/w/cpp/thread/lock_guard
 //TODO https://en.cppreference.com/w/cpp/thread/scoped_lock
 //TODO https://en.cppreference.com/w/cpp/thread/unique_lock
-//TODO https://en.cppreference.com/w/cpp/thread/condition_variable
-//TODO https://en.cppreference.com/w/cpp/thread/condition_variable_any
 
 namespace fishjoy {
-  class Semaphore : Noncopyable {
-   public:
-    explicit Semaphore(uint32_t count = 0);
-    ~Semaphore();
-
-    void wait();
-    void notify();
-
-   private:
-    sem_t m_semaphore;
-  };
 
   template<typename T>
   struct ScopedLockImpl {

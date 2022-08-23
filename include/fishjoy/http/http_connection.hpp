@@ -7,9 +7,9 @@
 
 #include <list>
 
-#include "fishjoy/fiber/thread.hpp"
 #include "fishjoy/net/uri.hpp"
 #include "fishjoy/streams/socket_stream.hpp"
+#include "fishjoy/thread/thread.hpp"
 #include "http.hpp"
 
 namespace fishjoy {

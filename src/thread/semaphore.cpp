@@ -1,7 +1,7 @@
 //
 // Created by zsl on 5/31/22.
 //
-#include "fishjoy/fiber/mutex.hpp"
+#include "fishjoy/thread/semaphore.hpp"
 
 namespace fishjoy {
   Semaphore::Semaphore(uint32_t count) {

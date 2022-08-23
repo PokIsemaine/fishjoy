@@ -2,10 +2,10 @@
 // Created by zsl on 5/29/22.
 //
 
-#include "fishjoy/fiber/thread.hpp"
+#include "fishjoy/thread/thread.hpp"
 
-#include "fishjoy/fiber/mutex.hpp"
 #include "fishjoy/log/log.hpp"
+#include "fishjoy/thread/mutex.hpp"
 #include "fishjoy/utils/util.hpp"
 
 namespace fishjoy {
@@ -25,7 +25,7 @@ namespace fishjoy {
     t_thread_name = name;
   }
 
-  Thread::Thread(std::function<void()> callback, const std::string& name) : m_callback(callback), m_name(name) {
+  Thread::Thread(std::function<void()> task, const std::string& name) : m_task(task), m_name(name) {
     if (name.empty()) {
       m_name = "UNKNOWN";
     }
@@ -64,12 +64,12 @@ namespace fishjoy {
     thread->m_id = fishjoy::GetThreadId();
     pthread_setname_np(pthread_self(), thread->m_name.substr(0, 15).c_str());
 
-    std::function<void()> callback;
-    callback.swap(thread->m_callback);
+    std::function<void()> task;
+    task.swap(thread->m_task);
     // 通知构造函数线程函数运行起来了
     thread->m_semaphore.notify();
     // 执行线程函数
-    callback();
+    task();
 
     return nullptr;
   }

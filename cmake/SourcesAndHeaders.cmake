@@ -11,18 +11,21 @@ set(sources
 	src/net/bytearray.cpp
 	src/net/fd_manager.cpp
 	src/net/tcp_server.cpp
+	src/net/uri.cpp
 
-	src/log.cpp
-	src/config.cpp
-	src/thread.cpp
-	src/mutex.cpp
-	src/fiber.cpp
-	src/scheduler.cpp
-	src/env.cpp
-	src/iomanager.cpp
-	src/timer.cpp
+	src/log/log.cpp
 
-	src/hook.cpp
+	src/config/config.cpp
+	src/config/env.cpp
+
+	src/thread/thread.cpp
+	src/thread/mutex.cpp
+
+	src/fiber/fiber.cpp
+	src/fiber/scheduler.cpp
+	src/fiber/iomanager.cpp
+	src/fiber/timer.cpp
+	src/fiber/hook.cpp
 
 	src/http/http-parser/http_parser.cpp
 	src/http/http.cpp
@@ -31,7 +34,6 @@ set(sources
 	src/http/http_server.cpp
 	src/http/http_session.cpp
 	src/http/servlet.cpp
-	src/uri.cpp
 )
 
 set(exe_sources
@@ -43,25 +45,6 @@ set(headers
 	include/fishjoy/utils.hpp
 	include/fishjoy/streams.hpp
 	include/fishjoy/net.hpp
-
-	include/fishjoy/config.hpp
-	include/fishjoy/thread.hpp
-	include/fishjoy/mutex.hpp
-	include/fishjoy/fiber.hpp
-	include/fishjoy/scheduler.hpp
-	include/fishjoy/env.hpp
-	include/fishjoy/iomanager.hpp
-	include/fishjoy/timer.hpp
-	include/fishjoy/hook.hpp
-
-	include/fishjoy/http/http-parser/http_parser.hpp
-	include/fishjoy/http/http.hpp
-	include/fishjoy/http/http_connection.hpp
-	include/fishjoy/http/http_parse.hpp
-	include/fishjoy/http/http_server.hpp
-	include/fishjoy/http/http_session.hpp
-	include/fishjoy/http/servlet.hpp
-	include/fishjoy/uri.hpp
 )
 
 set(test_sources

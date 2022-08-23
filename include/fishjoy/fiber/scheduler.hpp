@@ -10,8 +10,8 @@
 #include <vector>
 
 #include "fishjoy/fiber/fiber.hpp"
-#include "mutex.hpp"
-#include "thread.hpp"
+#include "fishjoy/thread/mutex.hpp"
+#include "fishjoy/thread/thread.hpp"
 
 namespace fishjoy {
   /**

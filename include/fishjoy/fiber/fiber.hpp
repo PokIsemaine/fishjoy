@@ -10,8 +10,8 @@
 #include <functional>
 #include <memory>
 
-#include "mutex.hpp"
-#include "thread.hpp"
+#include "fishjoy/thread/mutex.hpp"
+#include "fishjoy/thread/thread.hpp"
 
 namespace fishjoy {
 class Fiber: public std::enable_shared_from_this<Fiber> {

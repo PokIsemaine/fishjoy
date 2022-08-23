@@ -8,8 +8,8 @@
 #include <memory>
 
 #include "fishjoy/fiber/iomanager.hpp"
-#include "fishjoy/fiber/mutex.hpp"
 #include "fishjoy/net/socket.hpp"
+#include "fishjoy/thread/mutex.hpp"
 #include "stream.hpp"
 
 namespace fishjoy {

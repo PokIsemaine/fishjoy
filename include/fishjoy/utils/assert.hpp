@@ -6,7 +6,7 @@
 #define FISHJOY_ASSERT_HPP
 
 #include <assert.h>
-#include "fishjoy/utils/macro.hpp"
+#include "macro.hpp"
 
 /// 断言宏封装
 #define FISHJOY_ASSERT(x) \
