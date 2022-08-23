@@ -19,7 +19,7 @@ set(sources
 	src/config/env.cpp
 
 	src/thread/thread.cpp
-	src/thread/mutex.cpp
+	src/thread/semaphore.cpp
 
 	src/fiber/fiber.cpp
 	src/fiber/scheduler.cpp
@@ -45,6 +45,7 @@ set(headers
 	include/fishjoy/utils.hpp
 	include/fishjoy/streams.hpp
 	include/fishjoy/net.hpp
+	include/fishjoy/thread.hpp
 )
 
 set(test_sources
