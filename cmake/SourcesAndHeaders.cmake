@@ -14,6 +14,9 @@ set(sources
 	src/net/uri.cpp
 
 	src/log/log.cpp
+	src/log/log_file.cpp
+	src/log/log_buffer.cpp
+
 
 	src/config/config.cpp
 	src/config/env.cpp
@@ -46,6 +49,7 @@ set(headers
 	include/fishjoy/streams.hpp
 	include/fishjoy/net.hpp
 	include/fishjoy/thread.hpp
+	include/fishjoy/log.hpp
 )
 
 set(test_sources
