@@ -13,6 +13,7 @@ namespace fishjoy {
     APPENDFILE
   };
 
+
   class FileWriter {
    public:
     using ptr = std::shared_ptr<FileWriter>;
@@ -58,7 +59,7 @@ namespace fishjoy {
     LogFile(const std::string &basename, int32_t roll_size,
             int32_t flush_interval, int32_t check_interval,
             FileWriterType file_writer_type);
-    ~LogFile();
+    ~LogFile() = default;
 
     void append(const char *logline, int32_t len);
     void flush();
